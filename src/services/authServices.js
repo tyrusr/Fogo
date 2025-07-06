@@ -3,7 +3,8 @@ export async function loginUser(email, password) {
         method: "POST",
         headers: { 
             "Content-Type": "application/json" 
-        }
+        },
+        body: JSON.stringify({email, password})
     });
 
     const data = await res.json();
@@ -18,7 +19,8 @@ export async function registerUser(username, email, password) {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
-        }
+        },
+        body: JSON.stringify({username, email, password})
     });
 
     const data = await res.json();
@@ -28,26 +30,98 @@ export async function registerUser(username, email, password) {
     return data;
 }
 
-//async function to grab the users info
-    //fetch request
-    //return data if no errors
+export async function createListing(/* listing params */) {
+    const res = await fetch("", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            //csrf goes here
+        }
+        //send params in body
+    });
+    const data = await res.json();
+    if (!res.ok) {
+        throw new Error(data.message || "Create listing failed")
+    }
+    return data;
+}
 
-//async function to grab all the current listings
-    //fetch request
-    //return data if no errors
+export async function getUserProfile(/* profile params */) {
+    const res = await fetch("", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            //csrf goes here
+        }
+        //send params in body
+    });
+    const data = await res.json();
+    if (!res.ok) {
+        throw new Error(data.message || "Get Profile failed");
+    }
+    return data;
+}
 
-//async function to grab the users bids
-    //fetch request
-    //return data if no errors
+export async function getListings(params) {
+    const res = await fetch("", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            //csrf goes here
+        }
+        //send params in body
+    });
+    const data = await res.json();
+    if (!res.ok) {
+        throw new Error(data.message || "Get Listings failed");
+    }
+    return data;
+}
 
-//async function to submit a new listing form
-    //fetch request
-    //return data if no errors
+export async function getUsersBids(params) {
+     const res = await fetch("", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            //csrf goes here
+        }
+        //send params in body
+     });
+    const data = await res.json();
+    if (!res.ok) {
+        throw new Error(data.message || "Get Users Bids failed");
+    }
+    return data;
+}
 
-//async function to grab listing details for editing
-    //fetch request
-    //return data if no errors
+export async function getListingDetails(params) {
+    const res = await fetch("", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            //csrf goes here
+        }
+        //send params in body
+    })
+    const data = await res.json();
+    if (!res.ok) {
+        throw new Error(data.message || "Get Listing Details failed");
+    }
+    return data;
+}
 
-//async function to grab a single listing
-    //fetch request
-    //return data if no errors
+export async function getListing(params) {
+    const res = await fetch("", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            //csrf goes here
+        }
+        //send params in body
+    })
+    const data = await res.json();
+    if (!res.ok) {
+        throw new Error(data.message || "Get listing failed");
+    }
+    return data;
+}
