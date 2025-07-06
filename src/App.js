@@ -1,5 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import { Routes, Route } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import HomePage from "./pages/HomePage";
+import CreateListingPage from './pages/CreateListingPage';
+
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/createlisting" element={<CreateListingPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/login" elements={<LoginPage />} />
+    </Routes>
+  )
+}
 
 
 // make a react component for a login page
