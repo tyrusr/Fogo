@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { createListing } from "../services/authServices";
 
-export function useNewListing() {
+export function newListing() {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    async function newListing(/* parameters for listing */) {
+    async function handleNewListing(name, price, description, image) {
         setLoading(true);
         setError(null);
         try {
-            const data = await createListing(/* parameters for listing */);
+            const data = await createListing(name, price, description, image);
             setLoading(false);
             return data;
         } catch(err) {
@@ -18,5 +18,5 @@ export function useNewListing() {
         }
     }
 
-    return { newListing, error, loading};
+    return { handleNewListing, error, loading };
 }

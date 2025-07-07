@@ -6,7 +6,7 @@ export default function LoginForm() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
-    const { handleLogin, loading, error} = useLogin();
+    const { handleLogin, loading, error } = useLogin();
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -21,13 +21,16 @@ export default function LoginForm() {
         <input 
         type="email"
         id="email"
+        name="email"
         required
         value={email}
-        oncChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
         />
         <input 
             type="password"
+            id="password"
+            name="password"
             required
             value={password}
             minLength={1}
@@ -35,7 +38,7 @@ export default function LoginForm() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
         />
-        <button type="submit" disabled={loding}>
+        <button type="submit" disabled={loading}>
             {loading ? "Logging in" : "Login"}
         </button>
         {error && <p style={{ color: "red"}}>{error}</p>}

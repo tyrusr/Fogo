@@ -30,14 +30,14 @@ export async function registerUser(username, email, password) {
     return data;
 }
 
-export async function createListing(/* listing params */) {
+export async function createListing(name, price, description, image) {
     const res = await fetch("", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             //csrf goes here
-        }
-        //send params in body
+        },
+        body: JSON.stringify({name, price, description, image})
     });
     const data = await res.json();
     if (!res.ok) {

@@ -40,6 +40,8 @@ export default function RegisternForm() {
         />
         <input 
             type="password"
+            id="password"
+            name="password"
             required
             value={password}
             minLength={1}
@@ -49,6 +51,8 @@ export default function RegisternForm() {
         />
         <input 
             type="password"
+            id="password2"
+            name="password2"
             required
             value={password2}
             minLength={1}
