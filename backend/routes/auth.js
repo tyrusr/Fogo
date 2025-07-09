@@ -1,9 +1,18 @@
-//login
+const express = require('express');
+//import controller
+const router = express.Router();
+
+
+router.post('/login',/*controller goes here */);
 
 //logout
+//router.post('/');
 
 //refresh jwt
 
-//register
+
+router.post('/register');
 
 //export all the above
+
+module.exports = router;

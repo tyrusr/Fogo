@@ -14,6 +14,8 @@ export async function loginUser(email, password) {
     return data;
 }
 
+//make a logout
+
 export async function registerUser(username, email, password) {
     const res = await fetch("/api/auth/register", {
         method: "POST",
