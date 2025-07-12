@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
@@ -13,11 +12,13 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/createlisting" element={<CreateListingPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/login" elements={<LoginPage />} />
+      <Route path="/login" element={<LoginPage />} />
     </Routes>
   )
 }
 
+
+export default App;
 
 // make a react component for a login page
 
@@ -45,7 +46,7 @@ function App() {
 
 
 
-
+/*
 
 function App() {
   return (
@@ -67,5 +68,6 @@ function App() {
     </div>
   );
 }
+*/
 
-export default App;
+

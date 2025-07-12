@@ -19,51 +19,53 @@ export default function RegisternForm() {
     };
     
     return (
-    <form onSubmit={onSubmit}>
-        <input 
-        type="text"
-        id="username"
-        required
-        value={username}
-        minLength={1}
-        maxLength={30}
-        onChange={(e) => setUsername(e.target.value)}
-        placeholder="Username"
-        />
-        <input 
-        type="email"
-        id="email"
-        required
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-        />
-        <input 
-            type="password"
-            id="password"
-            name="password"
-            required
-            value={password}
-            minLength={1}
-            maxLength={100}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-        />
-        <input 
-            type="password"
-            id="password2"
-            name="password2"
-            required
-            value={password2}
-            minLength={1}
-            maxLength={100}
-            onChange={(e) => setPassword2(e.target.value)}
-            placeholder="Password"
-        />
-        <button type="submit" disabled={loading}>
-            {loading ? "Registering" : "Login"}
-        </button>
-        {error && <p style={{ color: "red"}}>{error}</p>}
-    </form>
+        <div>
+            <form onSubmit={onSubmit}>
+                <input 
+                type="text"
+                id="username"
+                required
+                value={username}
+                minLength={1}
+                maxLength={30}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Username"
+                />
+                <input 
+                type="email"
+                id="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+                />
+                <input 
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                    value={password}
+                    minLength={1}
+                    maxLength={100}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password"
+                />
+                <input 
+                    type="password"
+                    id="password2"
+                    name="password2"
+                    required
+                    value={password2}
+                    minLength={1}
+                    maxLength={100}
+                    onChange={(e) => setPassword2(e.target.value)}
+                    placeholder="Password"
+                />
+                <button type="submit" disabled={loading}>
+                    {loading ? "Registering" : "Login"}
+                </button>
+                {error && <p style={{ color: "red"}}>{error}</p>}
+            </form>
+        </div>
     );
 }

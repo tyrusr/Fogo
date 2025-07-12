@@ -57,7 +57,7 @@ export default function ListingForm() {
             onChange={(e) => setImage(e.target.value)}
             placeholder="Image URL"
         />
-        <button type="submit" disabled={loding}>
+        <button type="submit" disabled={loading}>
             {loading ? "Creating listing" : "Create"}
         </button>
         {error && <p style={{ color: "red"}}>{error}</p>}

@@ -3,7 +3,7 @@ import { loginUser } from "../services/authServices";
 
 export function useLogin() {
     const [error, setError] = useState(null);
-    cosnt [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     async function handleLogin(email, password){
         setLoading(true);
