@@ -1,10 +1,15 @@
 export async function loginUser(email, password) {
+    const csrfToken = localStorage.getItem('csrfToken');
+
     const res = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
         headers: { 
-            "Content-Type": "application/json" 
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken,
         },
+        credentials: 'include',
         body: JSON.stringify({email, password})
+        
     });
 
     const data = await res.json();
@@ -14,14 +19,44 @@ export async function loginUser(email, password) {
     return data;
 }
 
-//make a logout!
+export async function getCSRFToken() {
+    const csrfToken = localStorage.getItem('csrfToken');
 
-export async function registerUser(username, email, password) {
-    const res = await fetch("http://localhost:5000/api/auth/register", {
+    const res = await fetch('http://localhost:5000/api/csrf-token', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
+        credentials: 'include',
+    });
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch CSRF token");
+    }
+
+    return await res.json();
+}
+
+//export async function refreshJWT() {
+ //   const res = await fetch(""), {
+
+   // }
+    
+//}
+
+//make a logout!
+
+export async function registerUser(username, email, password) {
+    const csrfToken = localStorage.getItem('csrfToken');
+
+    const res = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken,
+        },
+        credentials: 'include',
+    
         body: JSON.stringify({username, email, password})
     });
 
@@ -33,12 +68,15 @@ export async function registerUser(username, email, password) {
 }
 
 export async function createListing(name, price, description, image) {
+    const csrfToken = localStorage.getItem('csrfToken');
+
     const res = await fetch("", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            //csrf goes here
+            "X-CSRF-Token": csrfToken,
         },
+        credentials: 'include',
         body: JSON.stringify({name, price, description, image})
     });
     const data = await res.json();
@@ -49,12 +87,15 @@ export async function createListing(name, price, description, image) {
 }
 
 export async function getUserProfile(/* profile params */) {
+    const csrfToken = localStorage.getItem('csrfToken');
+
     const res = await fetch("", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            //csrf goes here
-        }
+            "X-CSRF-Token": csrfToken,
+        },
+        credentials: 'include',
         //send params in body
     });
     const data = await res.json();
@@ -65,12 +106,15 @@ export async function getUserProfile(/* profile params */) {
 }
 
 export async function getListings(params) {
+    const csrfToken = localStorage.getItem('csrfToken');
+
     const res = await fetch("", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            //csrf goes here
-        }
+            "X-CSRF-Token": csrfToken,
+        },
+        credentials: 'include',
         //send params in body
     });
     const data = await res.json();
@@ -81,12 +125,15 @@ export async function getListings(params) {
 }
 
 export async function getUsersBids(params) {
+    const csrfToken = localStorage.getItem('csrfToken');
+
      const res = await fetch("", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            //csrf goes here
-        }
+            "X-CSRF-Token": csrfToken,
+        },
+        credentials: 'include',
         //send params in body
      });
     const data = await res.json();
@@ -97,12 +144,15 @@ export async function getUsersBids(params) {
 }
 
 export async function getListingDetails(params) {
+    const csrfToken = localStorage.getItem('csrfToken');
+
     const res = await fetch("", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            //csrf goes here
-        }
+            "X-CSRF-Token": csrfToken,
+        },
+        credentials: 'include',
         //send params in body
     })
     const data = await res.json();
@@ -113,12 +163,15 @@ export async function getListingDetails(params) {
 }
 
 export async function getListing(params) {
+    const csrfToken = localStorage.getItem('csrfToken');
+
     const res = await fetch("", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            //csrf goes here
-        }
+            "X-CSRF-Token": csrfToken,
+        },
+        credentials: 'include',
         //send params in body
     })
     const data = await res.json();

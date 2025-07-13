@@ -1,5 +1,6 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
+import useCSRFToken from './hooks/useCSRFToken';
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
@@ -7,6 +8,8 @@ import CreateListingPage from './pages/CreateListingPage';
 
 
 function App() {
+  const csrfToken = useCSRFToken();
+
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />

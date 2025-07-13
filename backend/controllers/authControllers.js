@@ -2,6 +2,7 @@
 //import sanatizer from middleware
 //import methods from model?
 const User = require('../models/User');
+const generateToken = require('../utils/generateToken');
 //import error middleware from middleware
 
 //create jwt
@@ -17,6 +18,16 @@ const loginUser = async (req, res) => {
         const existingUser = await User.findOne({ email });
         if (!existingUser) {
             return res.status(400).json({ error: "Invalid email or password"});
+        } else {
+            //check password matches and if then gen token
+
+            const token = generateToken(existingUser);
+
+            res.cookie('token', token, {
+                httpOnly: true,
+                secret: process.env.NODE_ENV === 'production',
+                sameSite: 'strict',
+            });
         }
 
         //check if password matches with the model method with bycript
@@ -79,6 +90,14 @@ const registerUser = async (req, res) => {
 
         const userItem = new User({ username, email, password });
         await userItem.save();
+
+        const token = generateToken(userItem);
+
+        res.cookie('token', token, {
+            httpOnly: true,
+            secret: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+        });
 
         res.status(201).json({ message: "User created successfully"});
     } catch (err) {
