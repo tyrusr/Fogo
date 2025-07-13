@@ -61,7 +61,7 @@ export default function RegisternForm() {
             placeholder="Password"
         />
         <button type="submit" disabled={loading}>
-            {loading ? "Registering" : "Login"}
+            {loading ? "Registering" : "Register"}
         </button>
         {error && <p style={{ color: "red"}}>{error}</p>}
     </form>

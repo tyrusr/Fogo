@@ -5,4 +5,4 @@ const useCors = {
     credentials: true
 }
 
-module.exports = cors(useCors);
+module.exports = () => cors(useCors);

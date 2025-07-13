@@ -1,5 +1,5 @@
 export async function loginUser(email, password) {
-    const res = await fetch("/api/auth/login", {
+    const res = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
         headers: { 
             "Content-Type": "application/json" 
@@ -14,10 +14,10 @@ export async function loginUser(email, password) {
     return data;
 }
 
-//make a logout
+//make a logout!
 
 export async function registerUser(username, email, password) {
-    const res = await fetch("/api/auth/register", {
+    const res = await fetch("http://localhost:5000/api/auth/register", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

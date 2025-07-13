@@ -1,9 +1,9 @@
 const express = require('express');
-//import controller
+const { loginUser, registerUser } = require('../controllers/authControllers');
 const router = express.Router();
 
 
-router.post('/login',/*controller goes here */);
+router.post('/login', loginUser);
 
 //logout
 //router.post('/');
@@ -11,7 +11,7 @@ router.post('/login',/*controller goes here */);
 //refresh jwt
 
 
-router.post('/register');
+router.post('/register', registerUser);
 
 //export all the above
 

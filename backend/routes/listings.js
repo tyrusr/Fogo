@@ -15,4 +15,4 @@ const router = express.Router();
 //place bid
 
 //export all above
-module.exports = router;
+//module.exports = router;
