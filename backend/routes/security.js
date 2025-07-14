@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/csrf-token', (req, res) => {
-    res.json({ csrfToken: req.csrfToken() });
+    const token = req.csrfToken();
+    res.json({ csrfToken: token });
 });
 
 module.exports = router;

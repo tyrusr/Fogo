@@ -11,7 +11,6 @@ export function useLogin() {
         try {
             const data = await loginUser(email, password);
             localStorage.setItem('jwt', data.jwt);
-            localStorage.setItem('csrfToken', data.csrfToken);
             setLoading(false);
             return data;
 

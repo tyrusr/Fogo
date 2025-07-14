@@ -18,7 +18,6 @@ export function useRegister() {
         try{
             const data = await registerUser(username, email, password, password2);
             localStorage.setItem('jwt', data.jwt);
-            localStorage.setItem('csrfToken', data.csrfToken);
             setLoading(false);
             return data;
         } catch(err) {

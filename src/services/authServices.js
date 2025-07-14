@@ -22,8 +22,8 @@ export async function loginUser(email, password) {
 export async function getCSRFToken() {
     const csrfToken = localStorage.getItem('csrfToken');
 
-    const res = await fetch('http://localhost:5000/api/csrf-token', {
-        method: "POST",
+    const res = await fetch('http://localhost:5000/api/security/csrf-token', {
+        method: "GET",
         headers: {
             "Content-Type": "application/json"
         },

@@ -6,7 +6,7 @@ export function useAuth() {
 
     useEffect(() => {
         const token = localStorage.getItem("jwt");
-        if (token) {
+        if (token && token.split('.').length === 3) {
             try {
                 const decode = jwtDecode(token);
                 setUser(decode);
