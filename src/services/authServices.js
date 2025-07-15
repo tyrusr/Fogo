@@ -44,6 +44,26 @@ export async function getCSRFToken() {
     
 //}
 
+export async function refreshJWT() {
+    const csrfToken = localStorage.getItem('csrfToken');
+    
+    const res = await fetch(/* refresh route */, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken,
+        },
+        credentials: 'include',
+    });
+
+    if (!res.ok) {
+        throw new Error("Failed to update JWT");
+    }
+
+    return await res.json();
+
+}
+
 //make a logout!
 
 export async function registerUser(username, email, password) {

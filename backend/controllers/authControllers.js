@@ -2,7 +2,7 @@
 //import sanatizer from middleware
 //import methods from model?
 const User = require('../models/User');
-const generateToken = require('../utils/generateToken');
+const { generateAccessToken, generateRefreshToken } = require('../utils/generateToken');
 //import error middleware from middleware
 
 //create jwt
@@ -10,6 +10,8 @@ const generateToken = require('../utils/generateToken');
 //create csrf
 
 //refresh jwt once timed out
+
+// in production we need to add secure: true to all the res.cookie stuff/////////////////////////////////////////////////////////////////////////////////
 
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
@@ -21,12 +23,21 @@ const loginUser = async (req, res) => {
         } else {
             //check password matches and if then gen token
 
-            const token = generateToken(existingUser);
+            const accessToken = generateAccessToken(existingUser);
+            const refreshToken = generateRefreshToken(existingUser);
 
-            res.cookie('token', token, {
+            res.cookie('accessToken', accessToken, {
                 httpOnly: true,
-                secret: process.env.NODE_ENV === 'production',
+                secure: process.env.NODE_ENV === 'production',
                 sameSite: 'strict',
+                maxAge: 1000 * 60 * 60 // 1 hour
+            });
+
+            res.cookie('refreshToken', refreshToken, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: 'strict',
+                maxAge: 1000 * 60 * 60 * 24 * 7 //7 days
             });
         }
 
@@ -91,12 +102,21 @@ const registerUser = async (req, res) => {
         const userItem = new User({ username, email, password });
         await userItem.save();
 
-        const token = generateToken(userItem);
+        const accessToken = generateAccessToken(existingUser);
+        const refreshToken = generateRefreshToken(existingUser);
 
-        res.cookie('token', token, {
+        res.cookie('accessToken', accessToken, {
             httpOnly: true,
-            secret: process.env.NODE_ENV === 'production',
+            secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict',
+            maxAge: 1000 * 60 * 60 // 1 hour
+        });
+
+        res.cookie('refreshToken', refreshToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+            maxAge: 1000 * 60 * 60 * 24 * 7 //7 days
         });
 
         res.status(201).json({ message: "User created successfully"});
