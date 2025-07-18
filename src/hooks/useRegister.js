@@ -16,10 +16,9 @@ export function useRegister() {
         }
 
         try{
-            const data = await registerUser(username, email, password, password2);
-            localStorage.setItem('jwt', data.jwt);
+            await registerUser(username, email, password, password2);
             setLoading(false);
-            return data;
+            return true;
         } catch(err) {
             if (err.message.includes("username")) {
                 setError("Username already taken");

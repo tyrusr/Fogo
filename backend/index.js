@@ -6,7 +6,7 @@ const routes = require('./routes');
 const csrf = require('csurf');
 const cookieParser = require('cookie-parser');
 
-const csrfProtection = csrf({ cookie: true });
+//const csrfProtection = csrf({ cookie: true });
 
 const app = express();
 const port = 5000;

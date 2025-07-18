@@ -9,10 +9,9 @@ export function useLogin() {
         setLoading(true);
         setError(null);
         try {
-            const data = await loginUser(email, password);
-            localStorage.setItem('jwt', data.jwt);
+            await loginUser(email, password);
             setLoading(false);
-            return data;
+            return true;
 
         } catch(err) {
             setError(err.message);
