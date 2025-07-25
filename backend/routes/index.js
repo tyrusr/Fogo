@@ -4,11 +4,13 @@ const router = express.Router();
 
 const authRoutes = require('./auth');
 const securityRoutes = require('./security');
+const listingRoutes = require('./listings');
 //const listingsRoutes = require('./listings');
 //const userRoutes = require('./users');
 
 router.use('/security', securityRoutes);
 router.use('/auth', authRoutes);
+router.use('/listings', listingRoutes)
 //router.use('/listings', listingsRoutes);
 //router.use('/users', userRoutes);
 

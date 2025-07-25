@@ -1,13 +1,15 @@
 const express = require('express');
 //import controller
+const { createListing } = require('../controllers/listingControllers');
 const router = express.Router();
+const { authenticateUser } = require('../middleware/authMiddleware');
 
 //get listings chunk, based on what page if using paination 20 results per page
 
 //get single listing when user clicks on one
 
 //create listing/post listing
-
+router.post('/createlisting', authenticateUser, createListing);
 //edit listing 
 
 //delete listing
@@ -15,4 +17,4 @@ const router = express.Router();
 //place bid
 
 //export all above
-//module.exports = router;
+module.exports = router;

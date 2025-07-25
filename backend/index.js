@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const connectDB = require('./config/db');
 const mongoose = require('mongoose');
@@ -14,7 +15,10 @@ const port = 5000;
 connectDB();
 
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000', // your React app URL
+  credentials: true,                // allow cookies and authorization headers
+}));
 app.use(cookieParser());
 app.use(express.json());
 app.use(csrf({ cookie: true }));

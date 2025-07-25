@@ -5,6 +5,8 @@
 //import from congig/db
 //import errormiddleware from middleware
 
+const Listing = require('../models/Listing');
+
 //post listing
     //try
         //check if authenticated by checking jwt and csrf token
@@ -15,6 +17,20 @@
         //redirect user to home page or to the new listings page not sure
     //catch
         //use errormiddleware
+
+const createListing = async (req, res) => {
+    try{
+        const { name, price, description, image } = req.body;
+
+        const newListing = new Listing({ name, price, description, image })
+        await newListing.save(); 
+
+        res.status(201).json({message: "Listing created successfully" });
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({ error: "Server error" });
+    }
+}
 
 //handle bid
     //try
@@ -49,3 +65,4 @@
     //catch
         //use error middleware
 
+module.exports = { createListing, }

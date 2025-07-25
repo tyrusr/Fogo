@@ -47,7 +47,7 @@ export async function getCSRFToken() {
 
 //make a logout!
 
-export async function registerUser(username, email, password) {
+export async function registerUser(username, email, password, password2) {
     const csrfToken = localStorage.getItem('csrfToken');
 
     const res = await fetch("http://localhost:5000/api/auth/register", {
@@ -58,7 +58,7 @@ export async function registerUser(username, email, password) {
         },
         credentials: 'include',
     
-        body: JSON.stringify({username, email, password})
+        body: JSON.stringify({username, email, password, password2})
     });
 
     const data = await res.json();
@@ -71,7 +71,7 @@ export async function registerUser(username, email, password) {
 export async function createListing(name, price, description, image) {
     const csrfToken = localStorage.getItem('csrfToken');
 
-    const res = await fetch("", {
+    const res = await fetch("http://localhost:5000/api/listings/createlisting", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

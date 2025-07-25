@@ -91,7 +91,8 @@ const loginUser = async (req, res) => {
 
 const registerUser = async (req, res) => {
 
-    const { username, email, password } = req.body;
+    const { username, email, password, password2 } = req.body;
+    console.log(username, email, password, password2);
 
     try{
         const existingUser = await User.findOne({ email });
@@ -99,11 +100,15 @@ const registerUser = async (req, res) => {
             return res.status(400).json({ error: "Email aready in use"});
         }
 
+        if (password !== password2) {
+            return res.status(400).json({ message: "Passwords do not match"});
+        }
+
         const userItem = new User({ username, email, password });
         await userItem.save();
 
-        const accessToken = generateAccessToken(existingUser);
-        const refreshToken = generateRefreshToken(existingUser);
+        const accessToken = generateAccessToken(userItem);
+        const refreshToken = generateRefreshToken(userItem);
 
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
