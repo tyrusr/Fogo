@@ -42,18 +42,3 @@ async function authenticateUser(req, res, next) {
         }
     }
 }
-//function verify jwt (access, secret)
-    //try
-        //verify the jwt
-        //if yes
-            //go ahead and return true or veified or something
-        //if no
-            //call refreshaccesstoken(refreshtoken)
-
-            //then return true
-    //catch
-        //send some sort of error
-
-
-
-
