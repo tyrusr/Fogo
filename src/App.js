@@ -5,17 +5,21 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
 import CreateListingPage from './pages/CreateListingPage';
+import { useState } from 'react';
 
 
 function App() {
   const csrfToken = useCSRFToken();
+  const [userName, setGlobalUsername] = useState(localStorage.getItem("username"));
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn"));
+
 
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<HomePage userName={userName} isLoggedIn={isLoggedIn} />} />
       <Route path="/createlisting" element={<CreateListingPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage setGlobalUsername={setGlobalUsername} setIsLoggedIn={setIsLoggedIn} />} />
+      <Route path="/login" element={<LoginPage setGlobalUsername={setGlobalUsername} setIsLoggedIn={setIsLoggedIn} />} />
     </Routes>
   )
 }

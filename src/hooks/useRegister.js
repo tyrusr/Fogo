@@ -30,6 +30,8 @@ export function useRegister() {
             setLoading(false);
         }
 
+        
+
     }
     return {handleRegister, loading, error}
 }

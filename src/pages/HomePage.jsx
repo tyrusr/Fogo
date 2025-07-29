@@ -6,10 +6,10 @@ import Layout from "../components/NavBar";
 
 //hook to grab all listings if displaying on hompepage
 
-export default function HomePage() {
+export default function HomePage({ userName, isLoggedIn }) {
     return (
         <div>
-            <Layout />
+            <Layout userName={userName} isLoggedIn={isLoggedIn} />
         </div>
     );
 }

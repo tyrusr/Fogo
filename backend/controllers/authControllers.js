@@ -124,7 +124,7 @@ const registerUser = async (req, res) => {
             maxAge: 1000 * 60 * 60 * 24 * 7 //7 days
         });
 
-        res.status(201).json({ message: "User created successfully"});
+        res.status(201).json({ message: "User created successfully", username:userItem.username });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Server error" });

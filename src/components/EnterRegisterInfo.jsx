@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useRegister } from "../hooks/useRegister";
 import { useNavigate } from 'react-router-dom';
 
-export default function RegisternForm() {
+export default function RegisternForm({ setGlobalUsername, setIsLoggedIn}) {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -14,6 +14,9 @@ export default function RegisternForm() {
         e.preventDefault();
         const result = await handleRegister(username, email, password, password2);
         if (result) {
+            const storedUsername = localStorage.getItem("username");
+            setGlobalUsername(storedUsername);
+            setIsLoggedIn(true);
             navigate('/');
         }
     };

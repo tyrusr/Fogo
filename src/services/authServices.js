@@ -65,6 +65,11 @@ export async function registerUser(username, email, password, password2) {
     if (!res.ok) {
         throw new Error(data.message || "Register failed")
     }
+
+    if (res.ok) {
+        localStorage.setItem("username", data.username);
+        localStorage.setItem("isLoggedIn", "true");
+    }
     return data;
 }
 

@@ -1,15 +1,13 @@
 import { Link } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
 
-export default function Layout(){
-    const { user, isLoggedIn} = useAuth();
+export default function Layout({ userName, isLoggedIn }){
 
     return (
-        <div class="nav-bar">
+        <div className="nav-bar">
             <Link to='/' className="nav-link" id="logo">Fogo</Link>
             <div className="nav-link">
-                {user ? (
-                    <p>Hello { user.username }</p>
+                {userName ? (
+                    <p>Hello { userName }</p>
                 ) : (
                     <p>Please Login!</p>
                 )}
@@ -18,7 +16,11 @@ export default function Layout(){
             {isLoggedIn && (
             <Link to='#' className="nav-link" id="login-reg">My profile</Link>
             )}
-            <Link to='/login' className="nav-link" id="login-reg">Login</Link>
+            {isLoggedIn ? (
+                <Link to='#' className="nav-link" id="login-reg">Logout</Link>
+            ) : (
+                <Link to='/login' className="nav-link" id="login-reg">Login</Link>
+            )}
         </div>
     );
 }
