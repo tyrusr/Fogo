@@ -21,7 +21,8 @@ app.use(cors({
 }));
 app.use(cookieParser());
 app.use(express.json());
-app.use(csrf({ cookie: true }));
+//add secure: true in deployment
+app.use(csrf({ cookie: { httpOnly: false, /* secure: true,*/ sameSite: 'strict' } }));
 app.use('/api', routes);
 //app.use(csrfProtection);
 

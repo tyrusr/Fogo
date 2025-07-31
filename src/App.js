@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 
 function App() {
-  const csrfToken = useCSRFToken();
+  useCSRFToken();
   const [userName, setGlobalUsername] = useState(localStorage.getItem("username"));
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn"));
 

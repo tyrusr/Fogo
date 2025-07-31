@@ -2,7 +2,8 @@ import { useState } from "react"
 import { useLogin } from "../hooks/useLogin"
 import { useNavigate } from 'react-router-dom';
 
-export default function LoginForm() {
+//import setusername and set is regerster as arguments
+export default function LoginForm({ setGlobalUsername, setIsLoggedIn }) {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
@@ -12,6 +13,10 @@ export default function LoginForm() {
         e.preventDefault();
         const result = await handleLogin(email, password);
         if (result) {
+            const storedUsername = localStorage.getItem("username");
+            setGlobalUsername(storedUsername);
+            const loggedIn = localStorage.getItem("isLoggedIn")
+            setIsLoggedIn(loggedIn);
             navigate('/')
         }
     };

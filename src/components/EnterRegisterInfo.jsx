@@ -16,7 +16,8 @@ export default function RegisternForm({ setGlobalUsername, setIsLoggedIn}) {
         if (result) {
             const storedUsername = localStorage.getItem("username");
             setGlobalUsername(storedUsername);
-            setIsLoggedIn(true);
+            const loggedIn = localStorage.getItem("isLoggedIn")
+            setIsLoggedIn(loggedIn);
             navigate('/');
         }
     };

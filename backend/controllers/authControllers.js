@@ -21,7 +21,10 @@ const loginUser = async (req, res) => {
         if (!existingUser) {
             return res.status(400).json({ error: "Invalid email or password"});
         } else {
-            //check password matches and if then gen token
+            const isMatch = await existingUser.comparePassword(password);
+            if (!isMatch) {
+                return res.status(400).json({ error: "Invalid email or password" });
+            }
 
             const accessToken = generateAccessToken(existingUser);
             const refreshToken = generateRefreshToken(existingUser);
@@ -39,16 +42,9 @@ const loginUser = async (req, res) => {
                 sameSite: 'strict',
                 maxAge: 1000 * 60 * 60 * 24 * 7 //7 days
             });
+
+            res.status(200).json({ message: "Login successful" });
         }
-
-        //check if password matches with the model method with bycript
-
-        //create tokens
-
-        //const userItem = new User({ email, password });
-        //await userItem.save();
-
-        //res.status(201).json({ message: "Login successful"});
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Server error" });
@@ -74,20 +70,7 @@ const loginUser = async (req, res) => {
     //delete the jwt to prevent stealing or do i just leave it as a cookie
     //not sure what else
 
-//handle register new user
-    //get users input
-    //validate users input from validateUserInput
-    //try
-        //check if username already exists
-        //check if email is already used
-        //if everything is good then
-            //create new user
-            //issue a jwt
-            //make csrf?
-            //redirect to home page
-        //shoudl i make a conditional for each thing that can go wrong or just leave the catch to handle that
-    //catch 
-        //call error from middleware
+
 
 const registerUser = async (req, res) => {
 

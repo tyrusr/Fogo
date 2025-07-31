@@ -1,5 +1,7 @@
+import Cookies from 'js-cookie';
+
 export async function loginUser(email, password) {
-    const csrfToken = localStorage.getItem('csrfToken');
+    const csrfToken = Cookies.get('XSRF-TOKEN');
 
     const res = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
@@ -16,39 +18,52 @@ export async function loginUser(email, password) {
     if (!res.ok) {
         throw new Error(data.message || "Login failed");
     }
+
+    if (res.ok) {
+        localStorage.setItem("username", data.username);
+        localStorage.setItem("isLoggedIn", "true");
+    }
+
     return data;
 }
 
+
 export async function getCSRFToken() {
-    const csrfToken = localStorage.getItem('csrfToken');
 
     const res = await fetch('http://localhost:5000/api/security/csrf-token', {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
         },
-        credentials: 'include',
+        credentials: 'include'
     });
 
     if (!res.ok) {
         throw new Error("Failed to fetch CSRF token");
     }
 
-    return await res.json();
+    const data = await res.json();
+
+    return data;
 }
-
-//export async function refreshJWT() {
- //   const res = await fetch(""), {
-
-   // }
-    
-//}
-
 
 //make a logout!
 
+export async function logoutUser() {
+    const csrfToken = Cookies.get('XSRF-TOKEN');
+    //csrf
+    //url
+        //method 
+        // headers 
+        // cred
+    //body passing username or cookie with user id for more secure logout
+
+    //if res not ok error
+    //if res ok then delete local varuables and also refresh and access token
+}
+
 export async function registerUser(username, email, password, password2) {
-    const csrfToken = localStorage.getItem('csrfToken');
+    const csrfToken = Cookies.get('XSRF-TOKEN');
 
     const res = await fetch("http://localhost:5000/api/auth/register", {
         method: "POST",
@@ -70,11 +85,12 @@ export async function registerUser(username, email, password, password2) {
         localStorage.setItem("username", data.username);
         localStorage.setItem("isLoggedIn", "true");
     }
+
     return data;
 }
 
 export async function createListing(name, price, description, image) {
-    const csrfToken = localStorage.getItem('csrfToken');
+    const csrfToken = Cookies.get('XSRF-TOKEN');
 
     const res = await fetch("http://localhost:5000/api/listings/createlisting", {
         method: "POST",
@@ -93,7 +109,7 @@ export async function createListing(name, price, description, image) {
 }
 
 export async function getUserProfile(/* profile params */) {
-    const csrfToken = localStorage.getItem('csrfToken');
+    const csrfToken = Cookies.get('XSRF-TOKEN');
 
     const res = await fetch("", {
         method: "POST",
@@ -112,7 +128,7 @@ export async function getUserProfile(/* profile params */) {
 }
 
 export async function getListings(params) {
-    const csrfToken = localStorage.getItem('csrfToken');
+    const csrfToken = Cookies.get('XSRF-TOKEN');
 
     const res = await fetch("", {
         method: "POST",
@@ -131,7 +147,7 @@ export async function getListings(params) {
 }
 
 export async function getUsersBids(params) {
-    const csrfToken = localStorage.getItem('csrfToken');
+    const csrfToken = Cookies.get('XSRF-TOKEN');
 
      const res = await fetch("", {
         method: "POST",
@@ -150,7 +166,7 @@ export async function getUsersBids(params) {
 }
 
 export async function getListingDetails(params) {
-    const csrfToken = localStorage.getItem('csrfToken');
+    const csrfToken = Cookies.get('XSRF-TOKEN');
 
     const res = await fetch("", {
         method: "POST",
@@ -169,7 +185,7 @@ export async function getListingDetails(params) {
 }
 
 export async function getListing(params) {
-    const csrfToken = localStorage.getItem('csrfToken');
+    const csrfToken = Cookies.get('XSRF-TOKEN');
 
     const res = await fetch("", {
         method: "POST",
