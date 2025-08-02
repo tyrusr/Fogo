@@ -2,6 +2,7 @@
 //import sanatizer from middleware
 //import methods from model?
 const User = require('../models/User');
+const jwt = require('jsonwebtoken');
 const { generateAccessToken, generateRefreshToken } = require('../utils/generateToken');
 //import error middleware from middleware
 
@@ -17,7 +18,16 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
     
     try{
-        const existingUser = await User.findOne({ email });
+        //email or username if we want
+        /*
+        const existingUser = await User.findOne({
+        $or: [
+            { email: email },
+            { username: username }
+        ]
+        });
+        */
+        const existingUser = await User.findOne({ email });//this might be invalid and we need to pass as an object
         if (!existingUser) {
             return res.status(400).json({ error: "Invalid email or password"});
         } else {
@@ -43,32 +53,52 @@ const loginUser = async (req, res) => {
                 maxAge: 1000 * 60 * 60 * 24 * 7 //7 days
             });
 
-            res.status(200).json({ message: "Login successful" });
+            return res.status(200).json({ message: "Login successful" });
         }
     } catch (err) {
         console.error(err);
-        res.status(500).json({ error: "Server error" });
+        return res.status(500).json({ error: "Server error" });
     }
 }
-
-//handle login async
-    //get users input
-    //validate users input from validateUserInput
-    //try
-        //make sure user exists in db
-        //get method form model to conmpare the users input to the hashed password in db
-        // if everything is good then
-            //sign in user 
-            // issue a jwt
-            //make csrf token?
-            //redirect to home page
-        //shoudl i make a conditional for each thing that can go wrong or just leave the catch to handle that
-    //catch 
-        //call error from middleware
 
 //handle logout
     //delete the jwt to prevent stealing or do i just leave it as a cookie
     //not sure what else
+
+const logoutUser = async (req, res) => {
+    const accessToken = req.cookies.accessToken;
+
+    if (!accessToken) {
+        return res.status(401).json({ message: 'Access denied'});
+    }
+
+    try {
+        const decodedToken = jwt.verify(accessToken, process.env.JWT_SECRET);
+
+        const existingUser = await User.findOne({ _id: decodedToken._id });
+
+        if (!existingUser) {
+            return res.status(404).json({ error: 'User not found'});
+        }
+
+        res.clearCookie('accessToken', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict'
+        });
+        res.clearCookie('refreshToken', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict'
+        });
+
+        return res.status(200).json({ message: 'Logout successful'})//maybe change the message
+
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ error: "Server error" });
+    }
+}
 
 
 
@@ -78,7 +108,7 @@ const registerUser = async (req, res) => {
     console.log(username, email, password, password2);
 
     try{
-        const existingUser = await User.findOne({ email });
+        const existingUser = await User.findOne({ email });//this might be invalid and we need to pass as an object
         if (existingUser) {
             return res.status(400).json({ error: "Email aready in use"});
         }
@@ -110,9 +140,9 @@ const registerUser = async (req, res) => {
         res.status(201).json({ message: "User created successfully", username:userItem.username });
     } catch (err) {
         console.error(err);
-        res.status(500).json({ error: "Server error" });
+        return res.status(500).json({ error: "Server error" });
     }
 }
 
-module.exports = { loginUser, registerUser };
+module.exports = { loginUser, registerUser, logoutUser };
 //export all

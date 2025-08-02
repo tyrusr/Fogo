@@ -1,6 +1,7 @@
 const express = require('express');
-const { loginUser, registerUser } = require('../controllers/authControllers');
+const { loginUser, registerUser, logoutUser } = require('../controllers/authControllers');
 //const authenticateToken = require('../utils/jwt')
+const {authenticateUser } = require('../middleware/authMiddleware');
 const router = express.Router();
 
 
@@ -9,6 +10,7 @@ router.post('/login', loginUser);
 //logout
 //router.post('/');
 //router.post('/createlstingsample, authenticateToken, controller);
+router.post('/logout', authenticateUser, logoutUser);
 
 //refresh jwt
 

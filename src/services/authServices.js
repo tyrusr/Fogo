@@ -1,3 +1,4 @@
+import { type } from '@testing-library/user-event/dist/type';
 import Cookies from 'js-cookie';
 
 export async function loginUser(email, password) {
@@ -27,6 +28,31 @@ export async function loginUser(email, password) {
     return data;
 }
 
+export async function logoutUser(){
+    const csrfToken = Cookies.get('XSRF-TOKEN');
+
+    const res = await fetch("http://localhost:5000/api/auth/logout", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken,            
+        },
+        credentials: 'include'
+    })
+
+    if(!res.ok) {
+        throw new Error("Failed to Logout user");
+    }
+    
+    if(res.ok) {
+        localStorage.removeItem("username");
+        localStorage.removeItem("isLoggedIn");
+        //delete jwt and local storage
+    } else {
+        throw new Error("Failed to logout user")
+    }
+}
+
 
 export async function getCSRFToken() {
 
@@ -47,20 +73,6 @@ export async function getCSRFToken() {
     return data;
 }
 
-//make a logout!
-
-export async function logoutUser() {
-    const csrfToken = Cookies.get('XSRF-TOKEN');
-    //csrf
-    //url
-        //method 
-        // headers 
-        // cred
-    //body passing username or cookie with user id for more secure logout
-
-    //if res not ok error
-    //if res ok then delete local varuables and also refresh and access token
-}
 
 export async function registerUser(username, email, password, password2) {
     const csrfToken = Cookies.get('XSRF-TOKEN');
