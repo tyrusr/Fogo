@@ -10,7 +10,7 @@ router.post('/login', loginUser);
 //logout
 //router.post('/');
 //router.post('/createlstingsample, authenticateToken, controller);
-router.post('/logout', authenticateUser, logoutUser);
+router.post('/logout', logoutUser);
 
 //refresh jwt
 

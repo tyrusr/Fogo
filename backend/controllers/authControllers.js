@@ -75,7 +75,7 @@ const logoutUser = async (req, res) => {
     try {
         const decodedToken = jwt.verify(accessToken, process.env.JWT_SECRET);
 
-        const existingUser = await User.findOne({ _id: decodedToken._id });
+        const existingUser = await User.findOne({ _id: decodedToken.id });
 
         if (!existingUser) {
             return res.status(404).json({ error: 'User not found'});
@@ -105,7 +105,6 @@ const logoutUser = async (req, res) => {
 const registerUser = async (req, res) => {
 
     const { username, email, password, password2 } = req.body;
-    console.log(username, email, password, password2);
 
     try{
         const existingUser = await User.findOne({ email });//this might be invalid and we need to pass as an object
@@ -137,7 +136,7 @@ const registerUser = async (req, res) => {
             maxAge: 1000 * 60 * 60 * 24 * 7 //7 days
         });
 
-        res.status(201).json({ message: "User created successfully", username:userItem.username });
+        return res.status(201).json({ message: "User created successfully", username:userItem.username });
     } catch (err) {
         console.error(err);
         return res.status(500).json({ error: "Server error" });

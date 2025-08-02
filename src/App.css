@@ -43,3 +43,14 @@
   width: 60%;
   height: 80px;
 }
+
+.logout-link {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    font-size: x-large;
+}
+

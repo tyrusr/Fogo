@@ -43,14 +43,9 @@ export async function logoutUser(){
     if(!res.ok) {
         throw new Error("Failed to Logout user");
     }
-    
-    if(res.ok) {
-        localStorage.removeItem("username");
-        localStorage.removeItem("isLoggedIn");
-        //delete jwt and local storage
-    } else {
-        throw new Error("Failed to logout user")
-    }
+
+    localStorage.removeItem("username");
+    localStorage.removeItem("isLoggedIn");
 }
 
 
