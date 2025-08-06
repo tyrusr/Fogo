@@ -28,6 +28,7 @@ const loginUser = async (req, res) => {
         });
         */
         const existingUser = await User.findOne({ email });//this might be invalid and we need to pass as an object
+        console.log(existingUser);
         if (!existingUser) {
             return res.status(400).json({ error: "Invalid email or password"});
         } else {
@@ -92,7 +93,7 @@ const logoutUser = async (req, res) => {
             sameSite: 'strict'
         });
 
-        return res.status(200).json({ message: 'Logout successful'})//maybe change the message
+        return res.status(200).json({ message: 'Logout successful'})
 
     } catch (err) {
         console.error(err);
@@ -107,13 +108,20 @@ const registerUser = async (req, res) => {
     const { username, email, password, password2 } = req.body;
 
     try{
-        const existingUser = await User.findOne({ email });//this might be invalid and we need to pass as an object
+        const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ error: "Email aready in use"});
+        } else if (!existingUser) {
+            const existingUserName = await User.findOne({ username });
+            if (existingUserName) {
+                return res.status(400).json({ error: "Username already taken"});
+            }
         }
 
+        
+
         if (password !== password2) {
-            return res.status(400).json({ message: "Passwords do not match"});
+            return res.status(400).json({ error: "Passwords do not match"});
         }
 
         const userItem = new User({ username, email, password });
@@ -144,4 +152,3 @@ const registerUser = async (req, res) => {
 }
 
 module.exports = { loginUser, registerUser, logoutUser };
-//export all

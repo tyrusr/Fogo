@@ -17,7 +17,7 @@ export async function loginUser(email, password) {
 
     const data = await res.json();
     if (!res.ok) {
-        throw new Error(data.message || "Login failed");
+        throw new Error(data.error || data.message || "Login failed");
     }
 
     if (res.ok) {
@@ -85,7 +85,7 @@ export async function registerUser(username, email, password, password2) {
 
     const data = await res.json();
     if (!res.ok) {
-        throw new Error(data.message || "Register failed")
+        throw new Error(data.error || data.message || "Register failed")
     }
 
     if (res.ok) {
