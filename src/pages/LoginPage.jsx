@@ -6,11 +6,13 @@ export default function LoginPage({ setGlobalUsername, setIsLoggedIn }) {
     return (
         <div>
             <Layout />
-            <h1>Login</h1>
-            <LoginForm setGlobalUsername={setGlobalUsername} setIsLoggedIn={setIsLoggedIn} />
-            <p>
-                Don't have an account? <Link to="/register">Register</Link>
-            </p>
+            <section className="login-container">
+                <h1 className="login-header">Login</h1> <br />
+                <LoginForm setGlobalUsername={setGlobalUsername} setIsLoggedIn={setIsLoggedIn} />
+                <p className="login-footer">
+                    Don't have an account? <Link to="/register">Register</Link>
+                </p>
+            </section>
         </div>
     );
 }

@@ -23,7 +23,7 @@ export default function RegisternForm({ setGlobalUsername, setIsLoggedIn}) {
     };
     
     return (
-    <form onSubmit={onSubmit}>
+    <form className="register-form" onSubmit={onSubmit}>
         <input 
         type="text"
         id="username"
@@ -33,7 +33,7 @@ export default function RegisternForm({ setGlobalUsername, setIsLoggedIn}) {
         maxLength={30}
         onChange={(e) => setUsername(e.target.value)}
         placeholder="Username"
-        />
+        /> <br />
         <input 
         type="email"
         id="email"
@@ -41,7 +41,7 @@ export default function RegisternForm({ setGlobalUsername, setIsLoggedIn}) {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
-        />
+        /> <br />
         <input 
             type="password"
             id="password"
@@ -52,7 +52,7 @@ export default function RegisternForm({ setGlobalUsername, setIsLoggedIn}) {
             maxLength={100}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
-        />
+        /> <br />
         <input 
             type="password"
             id="password2"
@@ -63,11 +63,11 @@ export default function RegisternForm({ setGlobalUsername, setIsLoggedIn}) {
             maxLength={100}
             onChange={(e) => setPassword2(e.target.value)}
             placeholder="Password"
-        />
-        <button type="submit" disabled={loading}>
+        /> <br />
+        <button style={{ width: "80px" }} type="submit" disabled={loading}>
             {loading ? "Registering" : "Register"}
         </button>
-        {error && <p style={{ color: "red"}}>{error}</p>}
+        {error && <p style={{ color: "red"}}>{error}</p>} <br />
     </form>
     );
 }

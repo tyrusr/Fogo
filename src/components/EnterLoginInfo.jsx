@@ -22,7 +22,7 @@ export default function LoginForm({ setGlobalUsername, setIsLoggedIn }) {
     };
     
     return (
-    <form onSubmit={onSubmit}>
+    <form className="login-form" onSubmit={onSubmit}>
         <input 
         type="email"
         id="email"
@@ -31,7 +31,7 @@ export default function LoginForm({ setGlobalUsername, setIsLoggedIn }) {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
-        />
+        /> <br />
         <input 
             type="password"
             id="password"
@@ -42,11 +42,11 @@ export default function LoginForm({ setGlobalUsername, setIsLoggedIn }) {
             maxLength={100}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
-        />
+        /> <br />
         <button type="submit" disabled={loading}>
             {loading ? "Logging in" : "Login"}
         </button>
-        {error && <p style={{ color: "red"}}>{error}</p>}
-    </form>
+        {error && <p style={{ color: "red"}}>{error}</p>} <br />
+    </form> 
     );
 }

@@ -54,3 +54,34 @@
     font-size: x-large;
 }
 
+.login-container, .register-container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+}
+
+.login-form, .login-header, .login-footer, .register-form, .register-header {
+  text-align: left; 
+}
+
+.login-form, .register-form {
+  text-align: center;
+  align-items: center;
+}
+
+.login-form input, .register-form input {
+  margin-bottom: 10px;
+  width: 300px;
+  height: 30px;
+}
+
+.login-footer, .register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+
