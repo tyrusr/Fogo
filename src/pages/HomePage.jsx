@@ -10,6 +10,7 @@ export default function HomePage({ userName, isLoggedIn }) {
     return (
         <div>
             <Layout userName={userName} isLoggedIn={isLoggedIn} />
+            
         </div>
     );
 }

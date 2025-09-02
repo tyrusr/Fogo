@@ -21,6 +21,7 @@ export async function loginUser(email, password) {
     }
 
     if (res.ok) {
+        console.log(data);
         localStorage.setItem("username", data.username);
         localStorage.setItem("isLoggedIn", "true");
     }
@@ -110,7 +111,7 @@ export async function createListing(name, price, description, image) {
     });
     const data = await res.json();
     if (!res.ok) {
-        throw new Error(data.message || "Create listing failed")
+        throw new Error(data.error || data.message || "Create listing failed")
     }
     return data;
 }
@@ -130,25 +131,6 @@ export async function getUserProfile(/* profile params */) {
     const data = await res.json();
     if (!res.ok) {
         throw new Error(data.message || "Get Profile failed");
-    }
-    return data;
-}
-
-export async function getListings(params) {
-    const csrfToken = Cookies.get('XSRF-TOKEN');
-
-    const res = await fetch("", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-CSRF-Token": csrfToken,
-        },
-        credentials: 'include',
-        //send params in body
-    });
-    const data = await res.json();
-    if (!res.ok) {
-        throw new Error(data.message || "Get Listings failed");
     }
     return data;
 }
@@ -207,5 +189,27 @@ export async function getListing(params) {
     if (!res.ok) {
         throw new Error(data.message || "Get listing failed");
     }
+    return data;
+}
+
+
+export async function getListings(params) {
+    const csrfToken = Cookies.get('XSRF-TOKEN');
+    // http://localhost:5000/
+    const res = await fetch("", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken,
+        },
+        credentials: 'include',
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+        throw new Error(data.message || "Get Listings failed");
+    }
+
     return data;
 }

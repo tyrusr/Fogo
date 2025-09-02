@@ -13,7 +13,7 @@ async function authenticateUser(req, res, next) {
     }
 
     try {
-        const decode =  jwt.verify(accessToken, process.env.JWT_SECRET);
+        const decoded =  jwt.verify(accessToken, process.env.JWT_SECRET);
         req.user = decoded;
         return next();
     } catch(err) {

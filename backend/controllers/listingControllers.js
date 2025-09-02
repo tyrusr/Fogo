@@ -21,8 +21,8 @@ const Listing = require('../models/Listing');
 const createListing = async (req, res) => {
     try{
         const { name, price, description, image } = req.body;
-
-        const newListing = new Listing({ name, price, description, image })
+        const userId = req.user.id;
+        const newListing = new Listing({ name, price, description, image, listerRef: userId })
         await newListing.save(); 
 
         res.status(201).json({message: "Listing created successfully" });
