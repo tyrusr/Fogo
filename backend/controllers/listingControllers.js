@@ -32,6 +32,24 @@ const createListing = async (req, res) => {
     }
 }
 
+const getListings = async (req, res) => {
+    try{
+        const listings = await Listing.find({});
+        //later add pagination
+        res.json(listings);
+    } catch(err) {
+        console.log('Failed to get listings');
+        res.status(404).json({ error: "Not found"});
+    }
+}
+//get listing
+    //try
+        //connect to db async
+        //get listing chunk based on pagination
+        //return array of listings
+    //catch
+        //use error middleware
+
 //handle bid
     //try
         //chekd if authenticated by checking jwt and csrf
@@ -57,12 +75,6 @@ const createListing = async (req, res) => {
 //handle close listing?
     // either timed close or let user decide not sure which just yet
 
-//get listing
-    //try
-        //connect to db async
-        //get listing chunk based on pagination
-        //return array of listings
-    //catch
-        //use error middleware
 
-module.exports = { createListing, }
+
+module.exports = { createListing, getListings }

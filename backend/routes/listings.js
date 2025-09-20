@@ -1,11 +1,11 @@
 const express = require('express');
 //import controller
-const { createListing } = require('../controllers/listingControllers');
+const { createListing, getListings } = require('../controllers/listingControllers');
 const router = express.Router();
 const { authenticateUser } = require('../middleware/authMiddleware');
 
 //get listings chunk, based on what page if using paination 20 results per page
-
+router.get('/getlistings', getListings)
 //get single listing when user clicks on one
 
 //create listing/post listing
