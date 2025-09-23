@@ -1,5 +1,5 @@
 import Layout from "../components/NavBar";
-
+import AllListings from "../components/Listings";
 //create post link
 
 //shows all listings from newest to oldest
@@ -10,7 +10,7 @@ export default function HomePage({ userName, isLoggedIn }) {
     return (
         <div>
             <Layout userName={userName} isLoggedIn={isLoggedIn} />
-            
+            <AllListings />
         </div>
     );
 }
