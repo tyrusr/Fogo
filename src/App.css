@@ -119,6 +119,7 @@
 }
 
 .listings-image{
-  width: 100%;
-  height: auto;
+  width: 500px;
+  height: 400px;
+  overflow: hidden;
 }
