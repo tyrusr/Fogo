@@ -84,4 +84,41 @@
   flex-direction: column;
 }
 
+.listings-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
+}
+
+.listings-main{
+  flex: 1 1 45%;
+  max-width: 500px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 3%;
+}
+
+.listings-np-container{
+  display: flex;
+  align-items: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.listings-name{
+
+}
+
+.listings-price{
+  margin-left: 40%;
+}
+
+.listings-description{
+  text-align: center;
+}
+
+.listings-image{
+  width: 100%;
+  height: auto;
+}

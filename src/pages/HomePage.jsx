@@ -6,6 +6,8 @@ import AllListings from "../components/Listings";
 
 //hook to grab all listings if displaying on hompepage
 
+//implement toast for better ui messaging or keep using messages that are part of the dom?
+
 export default function HomePage({ userName, isLoggedIn }) {
     return (
         <div>

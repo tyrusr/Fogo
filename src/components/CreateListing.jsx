@@ -10,9 +10,15 @@ export default function ListingForm() {
     const [image, setImage] = useState("");
     const { handleNewListing, error, loading } = newListing();
 
+    const placeholderUrl = "https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg";
+
     const onSubmit = async (e) => {
         e.preventDefault();
-        const result = await handleNewListing(name, price, description, image);
+        
+        //ensures the image was given and if not then we use the placeholder
+        const finalImage = image.trim() === "" ? placeholderUrl : image;
+
+        const result = await handleNewListing(name, price, description, finalImage);
         if (result) {
             navigate('/')
         }
@@ -53,7 +59,6 @@ export default function ListingForm() {
                 type="text"
                 id="image"
                 name="image"
-                required
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
                 placeholder="Image URL"
