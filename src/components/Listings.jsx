@@ -11,9 +11,9 @@ export default function AllListings({}){
     
 
     return(
-        <div className="listings-container">
+        <main className="listings-container">
             {listings.map(listing => (
-                    <div key={listing._id} className="listings-main">
+                    <section key={listing._id} className="listings-main">
                         <div className="listings-np-container">
                             <h1 className="listings-name">{listing.name}</h1>
                             <h3 className="listings-price">Current Price: {listing.price}</h3>
@@ -24,8 +24,8 @@ export default function AllListings({}){
                             onError={(e) => { e.target.src = "https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg"; }}
                         />
                         <p className="listings-description">{listing.description}</p>
-                    </div>
+                    </section>
             ))}
-        </div>
+        </main>
     );
 }

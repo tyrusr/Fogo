@@ -10,9 +10,9 @@ import AllListings from "../components/Listings";
 
 export default function HomePage({ userName, isLoggedIn }) {
     return (
-        <div>
+        <main>
             <Layout userName={userName} isLoggedIn={isLoggedIn} />
             <AllListings />
-        </div>
+        </main>
     );
 }
