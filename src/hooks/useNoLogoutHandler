@@ -1,0 +1,20 @@
+import { useState, useEffect } from "react";
+import { nologout } from "../services/authServices";
+
+export function clearOldLogin() {
+    useEffect(() => {
+        async function handleNoLogout() {
+            try {
+                const res = await nologout();
+                if(res.status === 501) {
+                    localStorage.removeItem("username");
+                    localStorage.removeItem("isLoggedIn");
+                }
+            } catch (err) {
+                localStorage.removeItem("username");
+                localStorage.removeItem("isLoggedIn");
+            }
+        }
+        handleNoLogout();
+    }, []);
+}

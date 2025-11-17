@@ -12,7 +12,7 @@ function App() {
   useCSRFToken();
   const [userName, setGlobalUsername] = useState(localStorage.getItem("username"));
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn"));
-
+//maybe call clear old local storage and cookies here
 
   return (
     <Routes>

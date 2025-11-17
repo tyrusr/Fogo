@@ -19,4 +19,6 @@ router.post('/register', registerUser);
 
 //export all the above
 
+//endpoint for no logout
+
 module.exports = router;

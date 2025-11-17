@@ -29,6 +29,24 @@ export async function loginUser(email, password) {
     return data;
 }
 
+//handlenologout function here
+export async function nologout(){
+    const csrfToken = Cookies.get('XSRF-TOKEN');
+
+    //maybe check if refresh token is valid front end only
+
+    const res = await fetch("#", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken,    
+        },
+        credentials: 'include'
+    })
+
+    return res;
+}
+
 export async function logoutUser(){
     const csrfToken = Cookies.get('XSRF-TOKEN');
 
@@ -44,7 +62,7 @@ export async function logoutUser(){
     if(!res.ok) {
         throw new Error("Failed to Logout user");
     }
-
+    //move to hooks later
     localStorage.removeItem("username");
     localStorage.removeItem("isLoggedIn");
 }
