@@ -4,7 +4,7 @@ import Layout from "../components/NavBar";
 
 export default function LoginPage({ setGlobalUsername, setIsLoggedIn }) {
     return (
-        <div>
+        <main>
             <Layout />
             <section className="login-container">
                 <h1 className="login-header">Login</h1> <br />
@@ -13,6 +13,6 @@ export default function LoginPage({ setGlobalUsername, setIsLoggedIn }) {
                     Don't have an account? <Link to="/register">Register</Link>
                 </p>
             </section>
-        </div>
+        </main>
     );
 }

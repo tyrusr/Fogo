@@ -6,10 +6,10 @@ export default function CreateListingPage() {
 
 
     return (
-        <div>
+        <main>
             <Layout />
             <CreateListing />
-        </div>
+        </main>
     );
 
     //new listing component

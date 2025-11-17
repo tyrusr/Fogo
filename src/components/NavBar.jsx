@@ -12,7 +12,7 @@ export default function Layout({ userName, isLoggedIn }){
     }
 
     return (
-        <div className="nav-bar">
+        <header className="nav-bar">
             <Link to='/' className="nav-link" id="logo">Fogo</Link>
             <div className="nav-link">
                 {userName ? (
@@ -21,6 +21,7 @@ export default function Layout({ userName, isLoggedIn }){
                     <p>Please Login!</p>
                 )}
             </div> 
+            
             
             {isLoggedIn && (
             <Link to='#' className="nav-link" id="login-reg">My profile</Link>
@@ -32,6 +33,6 @@ export default function Layout({ userName, isLoggedIn }){
             ) : (
                 <Link to='/login' className="nav-link" id="login-reg">Login</Link>
             )}
-        </div>
+        </header>
     );
 }
