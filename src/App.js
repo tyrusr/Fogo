@@ -5,14 +5,15 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
 import CreateListingPage from './pages/CreateListingPage';
+import useNoLogoutHandler from './hooks/useNoLogoutHandler';
 import { useState } from 'react';
 
 
 function App() {
   useCSRFToken();
+  useNoLogoutHandler();
   const [userName, setGlobalUsername] = useState(localStorage.getItem("username"));
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn"));
-//maybe call clear old local storage and cookies here
 
   return (
     <Routes>

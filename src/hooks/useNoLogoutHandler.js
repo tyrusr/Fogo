@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { nologout } from "../services/authServices";
 
-export function clearOldLogin() {
+export default function useNoLogoutHandler() {
+
     useEffect(() => {
         async function handleNoLogout() {
             try {

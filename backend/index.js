@@ -12,12 +12,10 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const port = 5000;
 
-connectDB();
-
-
 app.use(cors({
-  origin: 'http://localhost:3000', // your React app URL
-  credentials: true,                // allow cookies and authorization headers
+  origin: 'http://localhost:3000',
+  //allows cookies for jwt authentication
+  credentials: true,
 }));
 app.use(cookieParser());
 app.use(express.json());
@@ -29,15 +27,12 @@ app.use('/api', routes);
 
 
 
-
-app.listen(port, ()=> {
+connectDB().then(()=> {
+  app.listen(port, ()=> {
     console.log(`Server listening on port ${port}`);
+  });
 });
-    //handle user login
-
-//handle register new user
-
-//pass a listing to the front end
+    
 
 //handle bids
 
