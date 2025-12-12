@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//make this a local file in env to hide it with gitignore
 const mongoDB = "mongodb://127.0.0.1:27017/Mydb";
 
 const connectDB = ()=> {
