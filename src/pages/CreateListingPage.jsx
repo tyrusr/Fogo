@@ -2,12 +2,11 @@
 import Layout from "../components/NavBar";
 import CreateListing from "../components/CreateListing";
 
-export default function CreateListingPage() {
-
+export default function CreateListingPage({userName, isLoggedIn}) {
 
     return (
         <main>
-            <Layout />
+            <Layout  userName={userName} isLoggedIn={isLoggedIn}/>
             <CreateListing />
         </main>
     );
