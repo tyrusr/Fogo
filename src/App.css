@@ -123,3 +123,13 @@
   height: 400px;
   overflow: hidden;
 }
+
+.new-link-button{
+  text-align: center;
+}
+
+.new-link-button button{
+  width: 15%;
+  font-size: larger;
+  margin: 2%;
+}

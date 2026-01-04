@@ -9,7 +9,7 @@ export default function NewListing({ isLoggedIn }){
 
 
     return(
-        <nav>
+        <nav className="new-link-button">
             {isLoggedIn &&
                 <button onClick={handleClick} id="new-listing-link">
                     Create Listing
