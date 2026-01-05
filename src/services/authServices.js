@@ -32,7 +32,7 @@ export async function loginUser(email, password) {
 export async function nologout(){
     const csrfToken = Cookies.get('XSRF-TOKEN');
 
-    const res = await fetch("http://localhost:5000/api/auth/logout", {
+    const res = await fetch("http://localhost:5000/api/auth/nologout", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

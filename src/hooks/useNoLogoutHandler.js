@@ -7,7 +7,7 @@ export default function useNoLogoutHandler() {
         async function handleNoLogout() {
             try {
                 const res = await nologout();
-                if(res.status === 501) {
+                if(res.status === 401) {
                     localStorage.removeItem("username");
                     localStorage.removeItem("isLoggedIn");
                 }

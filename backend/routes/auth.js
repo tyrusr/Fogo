@@ -1,5 +1,5 @@
 const express = require('express');
-const { loginUser, registerUser, logoutUser } = require('../controllers/authControllers');
+const { loginUser, registerUser, logoutUser, nologout } = require('../controllers/authControllers');
 //const authenticateToken = require('../utils/jwt')
 const {authenticateUser } = require('../middleware/authMiddleware');
 const router = express.Router();
@@ -16,6 +16,8 @@ router.post('/logout', logoutUser);
 
 
 router.post('/register', registerUser);
+
+router.post('/nologout', nologout);
 
 //export all the above
 

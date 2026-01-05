@@ -44,7 +44,7 @@ const loginUser = async (req, res) => {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
                 sameSite: 'strict',
-                maxAge: 1000 * 60 * 60 // 1 hour
+                maxAge: 1000 * 60 * 30 // 30 minutes
             });
 
             res.cookie('refreshToken', refreshToken, {
@@ -62,9 +62,26 @@ const loginUser = async (req, res) => {
     }
 }
 
-//handle logout
-    //delete the jwt to prevent stealing or do i just leave it as a cookie
-    //not sure what else
+const nologout = async (req, res) => {
+
+    const refreshToken = req.cookies.refreshToken;
+
+    if (!refreshToken) {
+        return res.status(401).json({ message: 'Access denied'});
+    }
+
+    try {
+        const decodedRefreshToken = jwt.verify( refreshToken, process.env.JWT_REFRESH_SECRET);
+        return res.status(200);
+    } catch (err) {
+        if(err.name === 'TokenExpiredError') {
+            return res.status(401).json({ message: 'Access denied'});
+        }
+
+        console.error(err);
+        return res.status(401).json({ message: 'Access denied'});
+    }
+}
 
 const logoutUser = async (req, res) => {
     const accessToken = req.cookies.accessToken;
@@ -134,7 +151,7 @@ const registerUser = async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict',
-            maxAge: 1000 * 60 * 60 // 1 hour
+            maxAge: 1000 * 60 * 30 // 30 minutes
         });
 
         res.cookie('refreshToken', refreshToken, {
@@ -151,4 +168,4 @@ const registerUser = async (req, res) => {
     }
 }
 
-module.exports = { loginUser, registerUser, logoutUser };
+module.exports = { loginUser, registerUser, logoutUser, nologout };
