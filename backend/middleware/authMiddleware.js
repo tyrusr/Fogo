@@ -25,7 +25,7 @@ async function authenticateUser(req, res, next) {
             const newToken = await refreshAccessToken(refreshToken);
 
             if (!newToken) {
-                return res.status(401).json({ message: 'Invalid token'});
+                return res.status(401).json({ message: 'Invalid session, please logout'});
             }
 
             res.cookie('accessToken', newToken, {
@@ -38,7 +38,7 @@ async function authenticateUser(req, res, next) {
             req.user = jwt.decode(newToken);
             return next();
         } else {
-            return res.status(401).json({ message: 'Invalid token' });
+            return res.status(401).json({ message: 'Invalid session, please logout' });
         }
     }
 }
