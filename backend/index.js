@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const compression = require('compression');
+const helmet = require('helmet');
 const connectDB = require('./config/db');
 const mongoose = require('mongoose');
 const cors = require('./middleware/cors');
@@ -14,7 +15,7 @@ const app = express();
 const port = 5000;
 
 app.use(compression());
-
+app.use(helmet());
 app.use(cors({
   origin: 'http://localhost:3000',
   //allows cookies for jwt authentication
