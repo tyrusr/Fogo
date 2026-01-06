@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const compression = require('compression');
 const connectDB = require('./config/db');
 const mongoose = require('mongoose');
 const cors = require('./middleware/cors');
@@ -11,6 +12,8 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 const port = 5000;
+
+app.use(compression());
 
 app.use(cors({
   origin: 'http://localhost:3000',

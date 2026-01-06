@@ -17,5 +17,5 @@ export default function useNoLogoutHandler() {
             }
         }
         handleNoLogout();
-    }, []);
+    }, [location]);
 }
