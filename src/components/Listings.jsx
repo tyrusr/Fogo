@@ -3,7 +3,7 @@ import { useGetListings } from "../hooks/useGetListings";
 import { createStaticHandler } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-export default function AllListings({}){
+export default function AllListings(){
     const [listings, setlistings] = useState([]);
     const { handleGetListings } = useGetListings();
     const navigate = useNavigate();
@@ -12,14 +12,14 @@ export default function AllListings({}){
         handleGetListings().then(data => { setlistings(data); console.log(listings); });
     }, []);
     
-    const handleClick = () => {
-        navigate('/listing');
+    const handleClick = (listing) => {
+        navigate(`/listing/${listing._id}`);
     };
 
     return(
         <main className="listings-container">
             {listings.map(listing => (
-                    <section key={listing._id} className="listings-main" onClick={handleClick}>
+                    <section key={listing._id} className="listings-main" onClick={() => handleClick(listing)}>
                         <div className="listings-np-container">
                             <h1 className="listings-name">{listing.name}</h1>
                             <h3 className="listings-price">Current Price: {listing.price}</h3>
