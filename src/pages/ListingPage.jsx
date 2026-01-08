@@ -5,10 +5,11 @@ import Layout from "../components/NavBar";
 export default function ListingPage ({userName, isLoggedIn}) {
     return (
         <main>
-            <Layout />
+            <Layout userName={userName} isLoggedIn={isLoggedIn} />
+            <h1>listing goes here</h1>
             {/* listing hook goes here */}
         </main>
-    )
+    );
 }
 
 //shows listing info such as name bid pic etc

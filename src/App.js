@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import CreateListingPage from './pages/CreateListingPage';
 import useNoLogoutHandler from './hooks/useNoLogoutHandler';
 import { useState } from 'react';
+import ListingPage from './pages/ListingPage';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Route path="/createlisting" element={<CreateListingPage  userName={userName} isLoggedIn={isLoggedIn} />} />
       <Route path="/register" element={<RegisterPage setGlobalUsername={setGlobalUsername} setIsLoggedIn={setIsLoggedIn} />} />
       <Route path="/login" element={<LoginPage setGlobalUsername={setGlobalUsername} setIsLoggedIn={setIsLoggedIn} />} />
+      <Route path="/listing" element={<ListingPage setGlobalUsername={setGlobalUsername} setIsLoggedIn={setIsLoggedIn}/>} />
     </Routes>
   )
 }
