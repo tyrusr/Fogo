@@ -1,5 +1,8 @@
 import Layout from "../components/NavBar";
 import { useParams } from "react-router-dom";
+import Listing from "../components/IndividualListing.jsx";
+
+
 //get components from listings hook
 
 
@@ -9,8 +12,8 @@ export default function ListingPage ({userName, isLoggedIn}) {
     return (
         <main>
             <Layout userName={userName} isLoggedIn={isLoggedIn} />
+            <Listing id={id} />
             <h1>listing goes here</h1>
-            {/* listing hook goes here */}
         </main>
     );
 }
@@ -18,4 +21,5 @@ export default function ListingPage ({userName, isLoggedIn}) {
 //shows listing info such as name bid pic etc
 
 //note need to make the listings in home page link to this using the corresponding listing using the _id.
+
 
