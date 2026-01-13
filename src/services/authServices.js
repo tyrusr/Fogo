@@ -188,7 +188,7 @@ export async function getListingDetails(params) {
     return data;
 }
 
-export async function getListing(params) {
+export async function getListing(id) {
     const csrfToken = Cookies.get('XSRF-TOKEN');
 
     const res = await fetch("", {
@@ -198,7 +198,7 @@ export async function getListing(params) {
             "X-CSRF-Token": csrfToken,
         },
         credentials: 'include',
-        //send params in body
+        body: JSON.stringify({id})
     })
     const data = await res.json();
     if (!res.ok) {
