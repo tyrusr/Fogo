@@ -1,6 +1,6 @@
 const express = require('express');
 //import controller
-const { createListing, getListings } = require('../controllers/listingControllers');
+const { createListing, getListings, getListing } = require('../controllers/listingControllers');
 const router = express.Router();
 const { authenticateUser } = require('../middleware/authMiddleware');
 
@@ -12,6 +12,7 @@ router.post('/', getListings)
 router.post('/createlisting', authenticateUser, createListing);
 //edit listing 
 
+router.post('/getlisting', getListing/*authenticate?*/);
 //delete listing
 
 //place bid
