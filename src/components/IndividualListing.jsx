@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function Listing({id}){
-    //make a state here
+    const [listing, setListing] = useState();
 
     //make hook to grab the listing by the id here
 
