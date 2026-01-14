@@ -8,7 +8,7 @@ export function useGetListing(){
 
     async function handleGetListing(id){
         try {
-            const data = await getListing(id); //need to make get listing accept the id
+            const data = await getListing(id);
             return data;
         } catch (err) {
             console.log(err);

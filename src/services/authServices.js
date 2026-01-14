@@ -191,7 +191,7 @@ export async function getListingDetails(params) {
 export async function getListing(id) {
     const csrfToken = Cookies.get('XSRF-TOKEN');
 
-    const res = await fetch("http://localhost:5000/api/listing/", {
+    const res = await fetch("http://localhost:5000/api/listings/getlisting", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -201,9 +201,11 @@ export async function getListing(id) {
         body: JSON.stringify({id})
     })
     const data = await res.json();
+
     if (!res.ok) {
         throw new Error(data.message || "Get listing failed");
     }
+
     return data;
 }
 

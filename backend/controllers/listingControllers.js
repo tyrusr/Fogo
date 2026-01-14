@@ -45,15 +45,16 @@ const getListings = async (req, res) => {
 }
 
 const getListing = async (req,res) => {
+    console.log("getlisting ran");
     try{
         //unjsonify the id
-        const id = req.body;
-        const listing = await Listing.find({ _id: ObjectId(id) });
-        console.log(listing);
+        const { id } = req.body;
+
+        const listing = await Listing.findById(id);
+        //console.log(listing);
         res.json(listing);
 
     } catch(err) {
-        console.log('Failed to get listing');
         res.status(404).json({ error: "Not found"});
     }
 }
