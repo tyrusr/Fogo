@@ -190,7 +190,7 @@ export async function getListingDetails(params) {
 
 export async function getListing(id) {
     const csrfToken = Cookies.get('XSRF-TOKEN');
-
+    console.log("end route called");
     const res = await fetch("http://localhost:5000/api/listings/getlisting", {
         method: "POST",
         headers: {

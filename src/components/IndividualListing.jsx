@@ -7,10 +7,12 @@ export default function Listing({id}){
 
     //make hook to grab the listing by the id here
     useEffect(() => {
-        handleGetListing(id).then(data => { setListing(data); console.log(listing); });
-    }, [])
+        handleGetListing(id).then(data => { setListing(data); });
+    }, [id])
 
-
+    if (!listing) {
+        return (<main className="listing container">loading</main>);
+    }
     return(
         <main className="listing container">
             <div className="listing-np-container">

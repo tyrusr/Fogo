@@ -36,7 +36,7 @@ const getListings = async (req, res) => {
     try{
         const listings = await Listing.find({}).sort({ createdAt: -1 });
         //later add pagination
-        console.log(listings);
+
         res.json(listings);
     } catch(err) {
         console.log('Failed to get listings');
@@ -49,13 +49,14 @@ const getListing = async (req,res) => {
     try{
         //unjsonify the id
         const { id } = req.body;
-
+        console.log(id);
         const listing = await Listing.findById(id);
         //console.log(listing);
         res.json(listing);
 
     } catch(err) {
         res.status(404).json({ error: "Not found"});
+        console.log("error ran");
     }
 }
 

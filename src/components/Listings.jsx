@@ -15,7 +15,9 @@ export default function AllListings(){
     const handleClick = (listing) => {
         navigate(`/listing/${listing._id}`);
     };
-
+    if (!listings) {
+        return (<main className="listing container">loading</main>);
+    }
     return(
         <main className="listings-container">
             {listings.map(listing => (
