@@ -88,7 +88,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
 
+.listing-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 80%;
+  height: 100%;
 }
 
 .listings-main{
@@ -120,8 +127,8 @@
 
 .listings-image{
   width: 500px;
-  height: 400px;
-  overflow: hidden;
+  height: auto;
+  object-fit: cover;
 }
 
 .new-link-button{
@@ -132,4 +139,64 @@
   width: 15%;
   font-size: larger;
   margin: 2%;
+}
+
+
+.listing-container{
+  display: flex;
+  max-width: 80%;
+  margin: 3% auto 0 auto;
+  border: 2px solid black;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.listing-np-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details-section,
+.image-section {
+  flex: 0 0 50%;
+  height: 100%;
+}
+
+.listing-name,
+.listing-price {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.image-section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details-section{
+  display: flex;
+  flex-direction: column;
+  padding: 1%;
+  box-sizing: border-box;
+}
+
+.listing-image{
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.listing-name{}
+
+.listing-price{}
+
+.listing-description {
+  flex: 1;
+  overflow: hidden;
+  text-align: left;
 }

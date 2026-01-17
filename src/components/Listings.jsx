@@ -9,7 +9,7 @@ export default function AllListings(){
     const navigate = useNavigate();
 
     useEffect(() => {
-        handleGetListings().then(data => { setlistings(data); console.log(listings); });
+        handleGetListings().then(data => { setlistings(data); });
     }, []);
     
     const handleClick = (listing) => {
