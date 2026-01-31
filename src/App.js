@@ -1,14 +1,16 @@
-import './App.css';
+import { useState } from 'react';
 import { Routes, Route } from "react-router-dom";
+
 import useCSRFToken from './hooks/useCSRFToken';
+import useNoLogoutHandler from './hooks/useNoLogoutHandler';
+
+import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import HomePage from "./pages/HomePage";
 import CreateListingPage from './pages/CreateListingPage';
-import useNoLogoutHandler from './hooks/useNoLogoutHandler';
-import { useState } from 'react';
 import ListingPage from './pages/ListingPage';
 
+import './App.css';
 
 function App() {
   useCSRFToken();
