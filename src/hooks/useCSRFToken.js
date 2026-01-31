@@ -1,5 +1,4 @@
-// bad no local storage cookie only
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getCSRFToken } from "../services/authServices";
 
 export default function useCSRFToken() {
