@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { nologout } from "../services/authServices";
 
 export default function useNoLogoutHandler() {
