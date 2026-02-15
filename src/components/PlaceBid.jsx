@@ -9,8 +9,9 @@ export default function PlaceBid({}) {
         //call function from hook and pass the listing id await
     }
 
-    //make ternary operation that if loading true then button disabled
     return(
-        <button onClick={handleClick}>Button</button>
+        <button onClick={handleClick} disabled={loading}>
+            {loading ? "Loading" : "Place Bid"}
+        </button>
     )
 }
