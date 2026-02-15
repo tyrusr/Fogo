@@ -60,6 +60,18 @@ const getListing = async (req,res) => {
     }
 }
 
+//function async
+ //get req.body if post
+
+ //try
+   //variable and query db with id
+   //check if the current bid is higher then previous
+     //if so then update bid amount and higher bid await
+   //respond ok
+
+//catch errors and pass specific messages for errors
+  
+
 //handle bid
     //try
         //chekd if authenticated by checking jwt and csrf
