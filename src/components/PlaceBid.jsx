@@ -3,6 +3,7 @@
 //add is logged in to the params
 export default function PlaceBid({}) {
     //deconstructor goes here
+    const {data, error, loading, sendBid} = //hook function
 
     async function handleClick() {
         alert("wip");
