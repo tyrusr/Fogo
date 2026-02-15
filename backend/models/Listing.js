@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+//add a new category to keep track of bids or instead go ahead and update highest bid to do so
 const listingSchema = new mongoose.Schema({
     name: {
         type: String,
