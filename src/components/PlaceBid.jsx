@@ -1,9 +1,13 @@
 //import dependancies
 
-//function
+//add is logged in to the params
+export default function PlaceBid({}) {
 
-//event handler
+    async function handleClick() {
+        alert("wip");
+    }
 
-//return
-
-    //button to place bid with event listener
+    return(
+        <button onClick={handleClick}>Button</button>
+    )
+}
