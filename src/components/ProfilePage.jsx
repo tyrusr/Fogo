@@ -1,14 +1,14 @@
 //imports
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
 //function and any parameters for args
 export default function GetProfile() {
-  //deconstructors go here
+  const {data, error, loading, /*function*/} = //hook call need to add function
 
   useEffect(() => {
     async function Profile() {
       try {
-        //hook call goes here
+        //hook function call goes here
       } catch(err) {
         //handle error
       } 
