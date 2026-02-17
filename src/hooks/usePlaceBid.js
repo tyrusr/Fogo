@@ -1,15 +1,22 @@
-//imports
+import { useState, useEffect } from "react"
 
-//hook with id as argument parameter
- //states
+export default async function usePlaceBid() {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
- //useeffect
-   //function async
-   //setloading true
-   //try catch finally
-     //call services and await for a response
-    //setdataerror or loading
+  async function sendBid(/*user id and bid id*/) {
+    setLoading(true)
+    try {
+      //services call and store in var
+      //set data with var
+    } catch(err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  }
 
- //call function
+  return {data, error, loading, sendBid}
 
-//return states and function
+}
