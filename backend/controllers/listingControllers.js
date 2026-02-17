@@ -84,6 +84,19 @@ const getListing = async (req,res) => {
     //catch
         //use error middleware
 
+
+//get profile for page
+  //possibly need to update auth middleware to compare secret or do it in the function
+  
+  //async function
+    //try catch
+     //compare jwt colie with secred if incorrect throw error
+     // if ok then query db for the user and store in var
+     //return state and user in json
+    //catch error and return messages possibly depending on the error or later use rrror handling middleware and just send error to next and get rid of boiler plate code
+
+
+
 //handle delete listing
     //try
         //chekd if authenticated by checking jwt and csrf
