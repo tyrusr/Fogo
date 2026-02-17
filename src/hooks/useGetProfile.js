@@ -7,12 +7,18 @@ export default function useGetProfile() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+
+    async function getProfile() {
+        setLoading(true);
+        try {
+            //variable = services call(user id or something)
+            //setdata with variable
+        } catch(err) {
+            //seterror
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    return {data, error, loading, getProfile};
 }
-  //define states
-
-  //async function to get profile
-    //try catch 
-      //variable = services call(user id or something)
-      //setdata or error
-
-  //return states
