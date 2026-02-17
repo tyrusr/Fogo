@@ -2,6 +2,9 @@
 // import from services
 
 //hook function
+export default function useGetProfile() {
+    
+}
   //define states
 
   //async function to get profile
