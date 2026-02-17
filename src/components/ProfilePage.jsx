@@ -1,14 +1,26 @@
 //imports
+import { useState, useEffect } from 'react'
 
 //function and any parameters for args
-  //deconstructors
-  //a use effect wth a hook call to run on startup
-    //function inisde use effect async
-    //try catch finally
-      //we want to call the hook to get the profile and set the profile state as well as the error and loading
+export default function GetProfile() {
+  //deconstructors go here
 
-    //call function
-//return
+  useEffect(() => {
+    async function Profile() {
+      try {
+        //hook call goes here
+      } catch(err) {
+        //handle error
+      } 
+    }
+
+    Profile();
+  }, []);
+
   //a h1 or something with ternary operator where if user state is null then it says loading or it displays the user message and other details when not null
-
   //call other component ie profile listings inside this one
+  return (
+    <h1>wip</h1>
+  );
+
+}
