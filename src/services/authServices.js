@@ -230,3 +230,26 @@ export async function getListings(params) {
 
     return data;
 }
+
+export async function placeBid(params) {
+    const csrfToken = Cookies.get('XSRF-TOKEN');
+
+    const res = await fetch("", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken,
+        },
+        credentials: 'include',
+
+        //ids for user and for listing go here
+    });
+
+    //await the json response
+
+    if (!res.ok) {
+        //handle error
+    }
+
+    //return data;
+}
