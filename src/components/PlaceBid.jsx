@@ -1,13 +1,13 @@
 //import dependancies
+import { usePlaceBid } from "../hooks/usePlaceBid";
 
 //add is logged in to the params
 export default function PlaceBid({}) {
-    //deconstructor goes here
-    const {data, error, loading, sendBid} = //hook function
+    const {data, error, loading, sendBid} = usePlaceBid();
 
     async function handleClick() {
         alert("wip");
-        //call function from hook and pass the listing id await
+        //sendBid(pass id from main functions prop);
     }
 
     return(
