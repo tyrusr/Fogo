@@ -243,13 +243,16 @@ export async function placeBid(params) {
         credentials: 'include',
 
         //ids for user and for listing go here
+        body: JSON.stringify({/*id*/})
     });
 
     //await the json response
+
+    const data = await res.json();
 
     if (!res.ok) {
         //handle error
     }
 
-    //return data;
+    return data;
 }
