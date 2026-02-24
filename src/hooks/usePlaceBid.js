@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import placeBid from "../services/authServices";
+import { placeBid } from "../services/authServices";
 
 export function usePlaceBid() {
   const [data, setData] = useState(null);
