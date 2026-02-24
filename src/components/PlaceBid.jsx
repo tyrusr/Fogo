@@ -6,8 +6,7 @@ export default function PlaceBid({targetlisting}) {
     const {data, error, loading, sendBid} = usePlaceBid();
 
     async function handleClick() {
-        alert(targetlisting);
-        //sendBid(pass id from main functions prop);
+        sendBid(targetlisting);
     }
 
     return(
