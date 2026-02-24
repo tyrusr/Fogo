@@ -6,10 +6,10 @@ export function usePlaceBid() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  async function sendBid(targetlisting) {
+  async function sendBid(targetlisting, bidAmount) {
     setLoading(true)
     try {
-      const response = await placeBid(targetlisting);
+      const response = await placeBid(targetlisting, bidAmount);
       setData(response);
     } catch(err) {
       setError(err);
