@@ -29,8 +29,9 @@ export default function Listing({id}){
                     <h3 className="listing-price">Current Price: {listing.price}</h3>
                 </div>
                 <p className="listing-description">{listing.description}</p>
-                <PlaceBid />
+                
             </section>
+            <PlaceBid />
         </main>
     );
 }
