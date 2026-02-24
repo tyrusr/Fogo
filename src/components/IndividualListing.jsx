@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useGetListing } from "../hooks/useGetListing";
+import PlaceBid from "../components/PlaceBid.jsx";
 
 export default function Listing({id}){
     const [listing, setListing] = useState();
@@ -28,6 +29,7 @@ export default function Listing({id}){
                     <h3 className="listing-price">Current Price: {listing.price}</h3>
                 </div>
                 <p className="listing-description">{listing.description}</p>
+                <PlaceBid />
             </section>
         </main>
     );

@@ -13,13 +13,6 @@ export default function ListingPage ({userName, isLoggedIn}) {
         <main>
             <Layout userName={userName} isLoggedIn={isLoggedIn} />
             <Listing id={id} />
-            <h1>listing goes here</h1>
         </main>
     );
 }
-
-//shows listing info such as name bid pic etc
-
-//note need to make the listings in home page link to this using the corresponding listing using the _id.
-
-
