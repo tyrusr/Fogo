@@ -11,7 +11,7 @@ export default function PlaceBid({}) {
     }
 
     return(
-        <button onClick={handleClick} disabled={loading}>
+        <button className="bid-button" onClick={handleClick} disabled={loading}>
             {loading ? "Loading" : "Place Bid"}
         </button>
     )
