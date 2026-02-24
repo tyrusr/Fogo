@@ -2,11 +2,11 @@
 import { usePlaceBid } from "../hooks/usePlaceBid";
 
 //add is logged in to the params
-export default function PlaceBid({}) {
+export default function PlaceBid({targetlisting}) {
     const {data, error, loading, sendBid} = usePlaceBid();
 
     async function handleClick() {
-        alert("wip");
+        alert(targetlisting);
         //sendBid(pass id from main functions prop);
     }
 

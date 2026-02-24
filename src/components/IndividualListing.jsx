@@ -31,7 +31,7 @@ export default function Listing({id}){
                 <p className="listing-description">{listing.description}</p>
                 
             </section>
-            <PlaceBid />
+            <PlaceBid targetlisting={id}/>
         </main>
     );
 }
