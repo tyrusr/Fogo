@@ -12,17 +12,16 @@ export default function PlaceBid({targetlisting}) {
     }
 
     return(
-        <form onSubmit={handleClick}>
+        <form className="bid-button" onSubmit={handleClick}>
             <input
                 type="number"
                 value={bidAmount}
                 onChange={(e) => setBidAmount(e.target.value)}
                 required
             />
-            <button className="bid-button" disabled={loading}>
+            <button  disabled={loading}>
                 {loading ? "Loading" : "Place Bid"}
             </button>
         </form>
-        
     )
 }

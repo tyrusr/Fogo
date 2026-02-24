@@ -204,7 +204,12 @@
 
 .bid-button{
   position: absolute;
+  display: flex;
   bottom: 0;
   margin: 1%;
   right: 0;
+}
+
+.bid-button input{
+  margin-right: 5px;
 }
