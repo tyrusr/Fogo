@@ -8,7 +8,14 @@ export default function PlaceBid({targetlisting}) {
     const {data, error, loading, sendBid} = usePlaceBid();
 
     async function handleClick() {
-        sendBid(targetlisting, bidAmount);
+        try{
+            const response = await sendBid(targetlisting, bidAmount);
+            if (response) {
+                window.location.reload();
+            } 
+        } catch(err) {
+            console.log(err);
+        }
     }
 
     return(
