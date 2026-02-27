@@ -234,7 +234,7 @@ export async function getListings(params) {
 export async function placeBid(params) {
     const csrfToken = Cookies.get('XSRF-TOKEN');
 
-    const res = await fetch("", {
+    const res = await fetch("http://localhost:5000/api/listings/placebid", {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
