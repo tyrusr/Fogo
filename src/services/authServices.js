@@ -234,7 +234,7 @@ export async function getListings(params) {
 export async function placeBid(params) {
     const csrfToken = Cookies.get('XSRF-TOKEN');
 
-    const res = await fetch("http://localhost:5000/api/listings/placebid", {
+    const res = await fetch(`http://localhost:5000/api/listings/${listingId}/bid`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -243,7 +243,7 @@ export async function placeBid(params) {
         credentials: 'include',
 
         //ids for user and for listing go here
-        body: JSON.stringify({/*id*/})
+        body: JSON.stringify({/*bid amount*/})
     });
 
     //await the json response

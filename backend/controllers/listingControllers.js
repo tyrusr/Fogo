@@ -73,8 +73,6 @@ const getListing = async (req,res) => {
   
 
 const placeBid = async (req, res) => {
-    //get body
-    //get bidder from jwt
 
     //try
         //get the listing
