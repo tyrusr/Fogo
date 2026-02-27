@@ -23,6 +23,11 @@ const listingSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    highestBidder: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        default: null,
+    },
     description: {
         type: String,
         required: true,
@@ -37,7 +42,12 @@ const listingSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true,
-    }
+    },
+    status: {
+        type: String,
+        default: 'active',
+    },
+    
 }, {
     timestamps: true
 });
