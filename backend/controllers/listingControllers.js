@@ -80,6 +80,14 @@ const placeBid = async (req, res) => {
     console.log("place bid ran");
 
     try{
+
+        const listing = await Listing.findById(targetlisting);
+        if (!listing) return res.status(404).json({ message: "Listing not found" });
+
+        if (listing.listerRef.toString() === userId) {
+            return res.status(403).json({ message: "You cannot bid on your own listing" });
+        }
+
         const updateListing = await Listing.findOneAndUpdate(
             {
                 _id: targetlisting,
