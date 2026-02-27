@@ -24,7 +24,7 @@ function App() {
       <Route path="/createlisting" element={<CreateListingPage  userName={userName} isLoggedIn={isLoggedIn} />} />
       <Route path="/register" element={<RegisterPage setGlobalUsername={setGlobalUsername} setIsLoggedIn={setIsLoggedIn} />} />
       <Route path="/login" element={<LoginPage setGlobalUsername={setGlobalUsername} setIsLoggedIn={setIsLoggedIn} />} />
-      <Route path="/listing/:id" element={<ListingPage setGlobalUsername={setGlobalUsername} setIsLoggedIn={setIsLoggedIn}/>} />
+      <Route path="/listing/:id" element={<ListingPage userName={userName} isLoggedIn={isLoggedIn} />} />
     </Routes>
   )
 }
