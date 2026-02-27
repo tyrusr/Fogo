@@ -14,7 +14,7 @@ import './App.css';
 
 function App() {
   useCSRFToken();
-  useNoLogoutHandler();
+  //useNoLogoutHandler();
   const [userName, setGlobalUsername] = useState(localStorage.getItem("username"));
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn"));
 

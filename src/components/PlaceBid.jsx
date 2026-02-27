@@ -7,9 +7,13 @@ export default function PlaceBid({targetlisting}) {
     const [bidAmount, setBidAmount] = useState("");
     const {data, error, loading, sendBid} = usePlaceBid();
 
-    async function handleClick() {
+    async function handleClick(e) {
+        e.preventDefault();
+
+        console.log("button was pressed");
         try{
             const response = await sendBid(targetlisting, bidAmount);
+            console.log(`response: ${response} `);
             if (response) {
                 window.location.reload();
             } 
@@ -26,7 +30,7 @@ export default function PlaceBid({targetlisting}) {
                 onChange={(e) => setBidAmount(e.target.value)}
                 required
             />
-            <button  disabled={loading}>
+            <button type="submit"  disabled={loading}>
                 {loading ? "Loading" : "Place Bid"}
             </button>
         </form>

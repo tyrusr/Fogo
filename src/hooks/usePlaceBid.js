@@ -11,6 +11,7 @@ export function usePlaceBid() {
     try {
       const response = await placeBid(targetlisting, bidAmount);
       setData(response);
+      return response;
     } catch(err) {
       setError(err);
     } finally {

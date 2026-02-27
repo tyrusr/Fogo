@@ -77,6 +77,8 @@ const placeBid = async (req, res) => {
     const targetlisting = req.params.id;   
     const userId = req.user.id;
 
+    console.log("place bid ran");
+
     try{
         const updateListing = await Listing.findOneAndUpdate(
             {
