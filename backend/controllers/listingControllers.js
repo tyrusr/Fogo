@@ -114,4 +114,4 @@ const placeBid = async (req, res) => {
 
 
 
-module.exports = { createListing, getListings, getListing }
+module.exports = { createListing, getListings, getListing, placeBid }
