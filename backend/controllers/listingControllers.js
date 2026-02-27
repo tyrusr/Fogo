@@ -73,7 +73,21 @@ const getListing = async (req,res) => {
   
 
 const placeBid = async (req, res) => {
+    const { bidAmount } = req.body;   
+    const targetlisting = req.params.id;   
+    const userId = req.user.id;
 
+    try{
+        const updateListing = await Listing.findOneAndUpdate(
+            {
+                _id: targetlisting,
+                //status when we update schema goes here
+                
+            }
+        )
+    } catch(err) {
+
+    }
     //try
         //get the listing
         //compare current amount vs new bid if so throw error and send message
