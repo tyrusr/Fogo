@@ -72,17 +72,21 @@ const getListing = async (req,res) => {
 //catch errors and pass specific messages for errors
   
 
-//handle bid
+const placeBid = async (req, res) => {
+    //get body
+    //get bidder from jwt
+
     //try
-        //chekd if authenticated by checking jwt and csrf
-        //check if bid is valid with validatior
-        //connect to db
-        //filter to get all bids for that listing
-        //check if the new bid is higher then the last highest bid
-        //place bid if everything checks out by adding a new bid object in the db with the user and lsiting reference
-        //redirect to listing page
+        //get the listing
+        //compare current amount vs new bid if so throw error and send message
+        //get current bidder profile
+        //compare the current bidder is not the highest bid if so throw error and send message
+        //if nothing wrong then go ahead and just place the bid with query selectors
+        //note user might need to be redirected to the listing page after but that is a front end thing
+        //return success
     //catch
-        //use error middleware
+        //handle errors
+}
 
 
 //get profile for page
