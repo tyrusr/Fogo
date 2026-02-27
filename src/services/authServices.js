@@ -235,7 +235,7 @@ export async function placeBid(params) {
     const csrfToken = Cookies.get('XSRF-TOKEN');
 
     const res = await fetch("", {
-        method: "POST",
+        method: "PATCH",
         headers: {
             "Content-Type": "application/json",
             "X-CSRF-Token": csrfToken,

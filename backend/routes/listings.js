@@ -16,6 +16,7 @@ router.post('/getlisting', getListing/*authenticate?*/);
 //delete listing
 
 //place bid
+router.patch('/placebid', /* controller for placing bid */)
 
 //export all above
 module.exports = router;
