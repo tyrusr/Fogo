@@ -24,7 +24,9 @@ export default function AllListings(){
                     <section key={listing._id} className="listings-main" onClick={() => handleClick(listing)}>
                         <div className="listings-np-container">
                             <h1 className="listings-name">{listing.name}</h1>
-                            <h3 className="listings-price">Current Price: {listing.price}</h3>
+                            <h3 className="listings-price">
+                                Current Price: ${listing.highestBid > 0 ? listing.highestBid : listing.price}
+                            </h3>
                         </div>
                         <img 
                             className="listings-image"

@@ -26,7 +26,9 @@ export default function Listing({id}){
             <section className="details-section">
                 <div className="listing-np-container">
                     <h1 className="listing-name">{listing.name}</h1>
-                    <h3 className="listing-price">Current Price: {listing.price}</h3>
+                    <h3 className="listing-price">
+                        Current Price: ${listing.highestBid > 0 ? listing.highestBid : listing.price}
+                    </h3>
                 </div>
                 <p className="listing-description">{listing.description}</p>
                 
