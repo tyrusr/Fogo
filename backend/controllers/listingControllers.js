@@ -81,23 +81,30 @@ const placeBid = async (req, res) => {
         const updateListing = await Listing.findOneAndUpdate(
             {
                 _id: targetlisting,
-                //status when we update schema goes here
-                
-            }
+                status: 'active',
+                highestBid: { $lt: bidAmount },
+                highestBidder: { $ne: userId },
+            },
+            {
+                $set: { highestBid: bidAmount, highestBidder: userId }
+            },
+            { new: true }
         )
-    } catch(err) {
 
+        if (!updateListing) {
+            return res.status(400).json({
+                message: "Bid rejected: please try again"
+            });
+        }
+
+        return res.status(200).json({
+            message: "Bid successful",
+            listing: updateListing
+        })
+    } catch(err) {
+        console.error(err);
+        return res.status(500).json({ message: "Server error, please try again."})
     }
-    //try
-        //get the listing
-        //compare current amount vs new bid if so throw error and send message
-        //get current bidder profile
-        //compare the current bidder is not the highest bid if so throw error and send message
-        //if nothing wrong then go ahead and just place the bid with query selectors
-        //note user might need to be redirected to the listing page after but that is a front end thing
-        //return success
-    //catch
-        //handle errors
 }
 
 
