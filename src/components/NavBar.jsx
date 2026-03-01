@@ -24,7 +24,7 @@ export default function Layout({ userName, isLoggedIn }){
             
             
             {isLoggedIn && (
-            <Link to='#' className="nav-link" id="login-reg">My profile</Link>
+            <Link to='/profile' className="nav-link" id="login-reg">My profile</Link>
             )}
             {isLoggedIn ? (
                 <button onClick={onLogoutClick} className="nav-link logout-link" id="login-reg">
