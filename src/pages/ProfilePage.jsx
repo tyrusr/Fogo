@@ -1,5 +1,15 @@
 import Layout from "../components/NavBar";
 
+export default function ProfilePage({ userName, isLoggedIn }){
+    return (
+        <main>
+            <Layout userName={userName} isLoggedIn={isLoggedIn} />
+            <h1>wip</h1>
+        </main>
+    );
+}
+
+
 // shows all my listings
 
 // shows all my bids
