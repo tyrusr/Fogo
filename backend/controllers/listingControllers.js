@@ -37,7 +37,7 @@ const getListings = async (req, res) => {
         const listings = await Listing.find({}).sort({ createdAt: -1 });
         //later add pagination
 
-        res.json(listings);
+        res.json({listings});
     } catch(err) {
         console.log('Failed to get listings');
         res.status(404).json({ error: "Not found"});
