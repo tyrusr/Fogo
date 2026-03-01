@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import CreateListingPage from './pages/CreateListingPage';
 import ListingPage from './pages/ListingPage';
+import ProfilePage from './pages/ProfilePage';
 
 import './App.css';
 
@@ -25,7 +26,7 @@ function App() {
       <Route path="/register" element={<RegisterPage setGlobalUsername={setGlobalUsername} setIsLoggedIn={setIsLoggedIn} />} />
       <Route path="/login" element={<LoginPage setGlobalUsername={setGlobalUsername} setIsLoggedIn={setIsLoggedIn} />} />
       <Route path="/listing/:id" element={<ListingPage userName={userName} isLoggedIn={isLoggedIn} />} />
-      <Route path="/profile" element={<HomePage userName={userName} isLoggedIn={isLoggedIn} />} />
+      <Route path="/profile" element={<ProfilePage userName={userName} isLoggedIn={isLoggedIn} />} />
     </Routes>
   )
 }
