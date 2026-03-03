@@ -18,5 +18,8 @@ router.post('/getlisting', getListing/*authenticate?*/);
 //place bid
 router.patch('/:id/bid', authenticateUser, placeBid)
 
+router.get('/:id/userbids', authenticateUser, /* controller for fetching all the bids */);
+
+
 //export all above
 module.exports = router;
