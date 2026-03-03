@@ -128,6 +128,15 @@ const placeBid = async (req, res) => {
      //return state and user in json
     //catch error and return messages possibly depending on the error or later use rrror handling middleware and just send error to next and get rid of boiler plate code
 
+const getUsersBids = async (req, res) => {
+    //get the body contents or url contents
+
+    //try
+        //get the array of listings where the user bid on them if none pass none
+        //res the response of listings conditionally empty if nothing the array if something
+    //catch
+      //error handling
+}
 
 
 //handle delete listing
