@@ -129,13 +129,16 @@ const placeBid = async (req, res) => {
     //catch error and return messages possibly depending on the error or later use rrror handling middleware and just send error to next and get rid of boiler plate code
 
 const getUsersBids = async (req, res) => {
-    //get the body contents or url contents
+    const userId = req.user.id;
 
-    //try
-        //get the array of listings where the user bid on them if none pass none
-        //res the response of listings conditionally empty if nothing the array if something
-    //catch
-      //error handling
+    try{
+        const listings = await Listing.find({"highestBidder": userId}).sort({ createdAt: -1 });
+        
+        res.json({listings});
+    } catch(err) {
+        res.status(404).json({ error: "Not found"});
+        console.log("error ran");
+    }
 }
 
 
