@@ -258,18 +258,12 @@ export async function placeBid(targetlisting, bidAmount) {
 }
 
 
-export async function userBids(params) {
-    const csrfToken = "need from cookies";
+export async function userBids() {
+    const csrfToken = Cookies.get('XSRF-TOKEN');
 
     const res = await fetch('#', {
         method:"GET",
-        headers: {
-            "Content-Type": "application/json",
-            "X-CSRF-Token": csrfToken,
-        },
         credentials: "include",
-
-        //body if one
     });
 
     if (!res.ok) {
