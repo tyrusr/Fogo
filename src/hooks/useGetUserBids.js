@@ -1,5 +1,6 @@
 //imports
 import { useState } from "react";
+import { getUsersBids } from "../services/authServices";
 
 export function useGetUserBids(params){
     const [data, setData] = useState(null);
@@ -9,10 +10,12 @@ export function useGetUserBids(params){
     async function getBids(){
         setLoading(true)
         try{
-            //services call
-            //set data
+            const response = await getUsersBids();
+
+            setData(response);
+            console.log(`response ${response}`)
         } catch(err) {
-            //set error
+            console.log(err);
         } finally {
             setLoading(false);
         }
