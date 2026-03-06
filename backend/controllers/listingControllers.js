@@ -157,4 +157,4 @@ const getUsersBids = async (req, res) => {
 
 
 
-module.exports = { createListing, getListings, getListing, placeBid }
+module.exports = { createListing, getListings, getListing, placeBid, getUsersBids }

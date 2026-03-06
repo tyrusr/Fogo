@@ -1,6 +1,6 @@
 const express = require('express');
 //import controller
-const { createListing, getListings, getListing, placeBid } = require('../controllers/listingControllers');
+const { createListing, getListings, getListing, placeBid, getUsersBids } = require('../controllers/listingControllers');
 const router = express.Router();
 const { authenticateUser } = require('../middleware/authMiddleware');
 
@@ -18,8 +18,7 @@ router.post('/getlisting', getListing/*authenticate?*/);
 //place bid
 router.patch('/:id/bid', authenticateUser, placeBid)
 
-router.get('/:id/userbids', authenticateUser, /* controller for fetching all the bids */);
-
+router.get('/:id/userbids', authenticateUser, getUsersBids);
 
 //export all above
 module.exports = router;
