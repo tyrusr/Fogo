@@ -131,7 +131,8 @@ export async function createListing(name, price, description, image) {
     return data;
 }
 
-export async function getUserProfile(/* profile params */) {
+/*
+export async function getUserProfile() {
     const csrfToken = Cookies.get('XSRF-TOKEN');
 
     const res = await fetch("", {
@@ -149,6 +150,7 @@ export async function getUserProfile(/* profile params */) {
     }
     return data;
 }
+*/
 
 export async function getUsersBids(params) {
     const csrfToken = Cookies.get('XSRF-TOKEN');
@@ -251,7 +253,8 @@ export async function placeBid(targetlisting, bidAmount) {
     const data = await res.json();
 
     if (!res.ok) {
-        //handle error
+        console.log(res);
+        throw new Error(`HTTP error! status: ${res.status}`);
     }
 
     return data;
@@ -259,10 +262,17 @@ export async function placeBid(targetlisting, bidAmount) {
 
 
 export async function userBids() {
+    console.log("services ran");
     const csrfToken = Cookies.get('XSRF-TOKEN');
 
-    const res = await fetch('/userbids', {
+    console.log("services ran");
+
+    const res = await fetch('http://localhost:5000/api/listings/userbids', {
         method:"GET",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken,
+        },
         credentials: "include",
     });
 

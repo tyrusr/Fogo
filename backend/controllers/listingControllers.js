@@ -130,10 +130,11 @@ const placeBid = async (req, res) => {
 
 const getUsersBids = async (req, res) => {
     const userId = req.user.id;
-
+    console.log("get user bids controller ran");
     try{
         const listings = await Listing.find({"highestBidder": userId}).sort({ createdAt: -1 });
         
+        console.log(`listings ${listings}`);
         res.json({listings});
     } catch(err) {
         res.status(404).json({ error: "Not found"});
