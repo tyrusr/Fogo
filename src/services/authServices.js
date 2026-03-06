@@ -261,7 +261,7 @@ export async function placeBid(targetlisting, bidAmount) {
 export async function userBids() {
     const csrfToken = Cookies.get('XSRF-TOKEN');
 
-    const res = await fetch('#', {
+    const res = await fetch('/userbids', {
         method:"GET",
         credentials: "include",
     });

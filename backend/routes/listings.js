@@ -18,7 +18,7 @@ router.post('/getlisting', getListing/*authenticate?*/);
 //place bid
 router.patch('/:id/bid', authenticateUser, placeBid)
 
-router.get('/:id/userbids', authenticateUser, getUsersBids);
+router.get('/userbids', authenticateUser, getUsersBids);
 
 //export all above
 module.exports = router;
