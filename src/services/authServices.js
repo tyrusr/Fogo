@@ -266,11 +266,11 @@ export async function userBids() {
         credentials: "include",
     });
 
+    const data = await res.json()
+
     if (!res.ok) {
         console.log("wip");
     }
 
-    //const res = await res.json()
-    //return response
-
+    return data;
 }
