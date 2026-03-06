@@ -17,8 +17,8 @@ export function useGetUserBids(params){
             console.log("yes");
             const response = await userBids();
 
-            console.log(`response ${response}`);
-            setData(response);
+            console.log(`response ${response.listings}`);
+            setData(response.listings || []);
         } catch(err) {
             setError(err);
         } finally {
