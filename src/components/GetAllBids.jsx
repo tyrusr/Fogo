@@ -8,10 +8,10 @@ export default function UserBids() {
         getBids();
     }, [])
 
+    console.log(data);
+
     return (
         <div>
-            <div>wip</div>
-
             <main>
                 {data && data.map(listing => (
                     <section key={listing._id} className="listings-main" onClick={() => handleClick(listing)}>
