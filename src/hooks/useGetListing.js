@@ -16,6 +16,7 @@ export function useGetListing(){
             console.log(err);
         }
     }
+    
 
     return { handleGetListing }
 }
