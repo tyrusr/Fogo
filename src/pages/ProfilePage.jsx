@@ -6,7 +6,6 @@ export default function ProfilePage({ userName, isLoggedIn }){
         <main>
             <Layout userName={userName} isLoggedIn={isLoggedIn} />
             <UserBids />
-            <h1>wip</h1>
         </main>
     );
 }

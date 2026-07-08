@@ -134,7 +134,7 @@ const getUsersBids = async (req, res) => {
     try{
         const listings = await Listing.find({"highestBidder": userId}).sort({ createdAt: -1 });
         
-        console.log(`listings ${listings}`);
+        console.log(`listings ${listings}`, listings);
         res.json({listings});
     } catch(err) {
         res.status(404).json({ error: "Not found"});
