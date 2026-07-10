@@ -7,8 +7,8 @@ export default function useGetUserListings() {
     async function getUserListings() {
         setLoading(true);
         try {
-            //variable = services call(user id or something)
-            //setdata with variable
+            const response = await //getUserListings();
+            setData(response);
         } catch(err) {
             //seterror
         } finally {
