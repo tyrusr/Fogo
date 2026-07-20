@@ -7,7 +7,7 @@ export default function useGetUserListings() {
     async function getUserListings() {
         setLoading(true);
         try {
-            const response = await //getUserListings();
+            const response = await getUserListings();
             setData(response);
         } catch(err) {
             //seterror

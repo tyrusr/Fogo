@@ -267,3 +267,29 @@ export async function userBids() {
 
     return data;
 }
+
+export async function getUserListings() {
+    console.log("services ran");
+    const csrfToken = Cookies.get('XSRF-TOKEN');
+
+    console.log("services ran");
+
+    const res = await fetch('http://localhost:5000/api/listings/userlistings', {
+        method:"GET",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken,
+        },
+        credentials: "include",
+    });
+
+    const data = await res.json()
+
+    console.log("data",data);
+
+    if (!res.ok) {
+        console.log("wip");
+    }
+
+    return data;
+}
