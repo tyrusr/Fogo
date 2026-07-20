@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { getUserListings } from "../hooks/useGetUserListings";
+import { useGetUserListingss } from "../hooks/useGetUserListings";
 import { useNavigate } from "react-router-dom";
 //call the hook for getting the listings the user posted
 
 export default function UserListings() {
-    const {data, error, loading, getBids} = useGetUserBids();
+    const { data, error, loading, getUserListings } = useGetUserBids();
 
     useEffect(() => {
         getUserListings();
