@@ -172,4 +172,4 @@ const getUserListings = async (req, res) => {
 
 
 
-module.exports = { createListing, getListings, getListing, placeBid, getUsersBids }
+module.exports = { createListing, getListings, getListing, placeBid, getUsersBids, getUserListings };
