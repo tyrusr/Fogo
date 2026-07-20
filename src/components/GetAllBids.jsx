@@ -1,12 +1,19 @@
 import { useEffect } from "react";
 import { useGetUserBids } from "../hooks/useGetUserBids";
+import { useNavigate } from "react-router-dom";
 
 export default function UserBids() {
     const {data, error, loading, getBids} = useGetUserBids();
+    
+    const navigate = useNavigate();
 
     useEffect(() => {
         getBids();
     }, [])
+
+    const handleClick = (listing) => {
+        navigate(`/listing/${listing._id}`);
+    };
 
     console.log(data);
 
