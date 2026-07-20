@@ -26,5 +26,5 @@ export function useGetUserBids(params){
         }
     }
 
-    return {data, error, loading, getBids};
+    return { data, error, loading, getBids };
 }
