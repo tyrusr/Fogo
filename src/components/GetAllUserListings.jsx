@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { useGetUserBids } from "../hooks/useGetUserBids";
+import { useNavigate } from "react-router-dom";
 //call the hook for getting the listings the user posted
 
 export default function UserListings() {
@@ -7,6 +9,10 @@ export default function UserListings() {
     useEffect(() => {
         getBids();
     }, [])
+
+    const handleClick = (listing) => {
+        navigate(`/listing/${listing._id}`);
+    };
 
     return (
         <div>
