@@ -1,5 +1,6 @@
-
-export default function useGetUserListings() {
+import { useState } from "react";
+import { getAllUserListings } from "../services/authServices";
+export function useGetUserListings() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -7,8 +8,8 @@ export default function useGetUserListings() {
     async function getUserListings() {
         setLoading(true);
         try {
-            const response = await getUserListings();
-            setData(response);
+            const response = await getAllUserListings();
+            setData(response.listings || []);
         } catch(err) {
             //seterror
         } finally {

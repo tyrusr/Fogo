@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useGetUserListingss } from "../hooks/useGetUserListings";
+import { useGetUserListings } from "../hooks/useGetUserListings";
 import { useNavigate } from "react-router-dom";
 //call the hook for getting the listings the user posted
 

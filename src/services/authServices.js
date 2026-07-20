@@ -268,7 +268,7 @@ export async function userBids() {
     return data;
 }
 
-export async function getUserListings() {
+export async function getAllUserListings() {
     console.log("services ran");
     const csrfToken = Cookies.get('XSRF-TOKEN');
 
