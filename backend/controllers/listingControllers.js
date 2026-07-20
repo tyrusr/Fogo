@@ -143,6 +143,20 @@ const getUsersBids = async (req, res) => {
 }
 
 
+
+const getUserListings = async (req, res) => {
+    const userId = req.user.id;
+    console.log("get user bids controller ran");
+    try{
+        const listings = await Listing.find({"listerRef": userId}).sort({ createdAt: -1 });
+        
+        console.log(`listings ${listings}`, listings);
+        res.json({listings});
+    } catch(err) {
+        res.status(404).json({ error: "Not found"});
+        console.log("error ran");
+    }
+}
 //handle delete listing
     //try
         //chekd if authenticated by checking jwt and csrf

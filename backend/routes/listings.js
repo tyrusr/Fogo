@@ -20,5 +20,7 @@ router.patch('/:id/bid', authenticateUser, placeBid)
 
 router.get('/userbids', authenticateUser, getUsersBids);
 
+router.get('/userlistings', authenticateUser, getUserListings);
+
 //export all above
 module.exports = router;
