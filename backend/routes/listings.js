@@ -1,6 +1,6 @@
 const express = require('express');
 //import controller
-const { createListing, getListings, getListing, placeBid, getUsersBids } = require('../controllers/listingControllers');
+const { createListing, getListings, getListing, placeBid, getUsersBids, getUserListings } = require('../controllers/listingControllers');
 const router = express.Router();
 const { authenticateUser } = require('../middleware/authMiddleware');
 
