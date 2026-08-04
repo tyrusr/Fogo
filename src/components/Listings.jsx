@@ -4,23 +4,25 @@ import { createStaticHandler } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export default function AllListings(){
-    const [listings, setlistings] = useState([]);
-    const { handleGetListings } = useGetListings();
+    //const [listings, setlistings] = useState();
+    const {listings, error, loading, handleGetListings } = useGetListings();
     const navigate = useNavigate();
 
+    
     useEffect(() => {
-        handleGetListings().then(data => { setlistings(data.listings); });
+        handleGetListings();
+        //handleGetListings().then(data => { setlistings(data.listings); });
     }, []);
     
     const handleClick = (listing) => {
         navigate(`/listing/${listing._id}`);
     };
-    if (!listings) {
+    if (loading || !listings) {
         return (<main className="listing container">loading</main>);
     }
     return(
         <main className="listings-container">
-            {listings.map(listing => (
+            {listings && listings.map(listing => (
                     <section key={listing._id} className="listings-main" onClick={() => handleClick(listing)}>
                         <div className="listings-np-container">
                             <h1 className="listings-name">{listing.name}</h1>

@@ -3,16 +3,20 @@ import { getListings } from "../services/authServices";
 
 //export function
 export function useGetListings(){
-
+    const [listings, setListings] = useState([]);
+    const [error, setError] = useState(null);
+    const [loading, setloading] = useState(false);
     async function handleGetListings(){
+        setloading(true);
         try {
             const data = await getListings();
-            return data;
+            setListings(data.listings);
         } catch(err) {
             console.log(err);
-            return [];
+        } finally {
+            setloading(false);
         }
     }
 
-    return { handleGetListings }
+    return { listings, error, loading, handleGetListings }
 }
