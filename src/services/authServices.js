@@ -194,13 +194,13 @@ export async function getListing(id) {
 
 
 export async function getListings(params) {
-    const csrfToken = Cookies.get('XSRF-TOKEN');
+    //const csrfToken = Cookies.get('XSRF-TOKEN');
     // http://localhost:5000/
     const res = await fetch("http://localhost:5000/api/listings/", {
-        method: "POST",
+        method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "X-CSRF-Token": csrfToken,
+            //"X-CSRF-Token": csrfToken,
         },
         credentials: 'include',
     });
