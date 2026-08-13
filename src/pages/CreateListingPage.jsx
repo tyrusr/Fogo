@@ -10,9 +10,4 @@ export default function CreateListingPage({userName, isLoggedIn}) {
             <CreateListing />
         </main>
     );
-
-    //new listing component
-        //set state stuff
-        //on submit
-        //form for new listing fields
 }
