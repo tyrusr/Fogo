@@ -4,14 +4,12 @@ import { createStaticHandler } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export default function AllListings(){
-    //const [listings, setlistings] = useState();
     const {listings, error, loading, handleGetListings } = useGetListings();
     const navigate = useNavigate();
 
     
     useEffect(() => {
         handleGetListings();
-        //handleGetListings().then(data => { setlistings(data.listings); });
     }, []);
     
     const handleClick = (listing) => {
