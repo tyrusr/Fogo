@@ -6,28 +6,13 @@ const jwt = require('jsonwebtoken');
 const { generateAccessToken, generateRefreshToken } = require('../utils/generateToken');
 //import error middleware from middleware
 
-//create jwt
-
-//create csrf
-
-//refresh jwt once timed out
-
 // in production we need to add secure: true to all the res.cookie stuff/////////////////////////////////////////////////////////////////////////////////
 
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
     
     try{
-        //email or username if we want
-        /*
-        const existingUser = await User.findOne({
-        $or: [
-            { email: email },
-            { username: username }
-        ]
-        });
-        */
-        const existingUser = await User.findOne({ email });//this might be invalid and we need to pass as an object
+        const existingUser = await User.findOne({ email });
         console.log(existingUser);
         if (!existingUser) {
             return res.status(400).json({ error: "Invalid email or password"});
