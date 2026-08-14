@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getListings } from "../services/authServices";
 
-//export function
+
 export function useGetListings(){
     const [listings, setListings] = useState([]);
     const [error, setError] = useState(null);
