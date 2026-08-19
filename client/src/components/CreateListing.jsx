@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { newListing } from "../hooks/useNewListing";
+import { useNewListing } from "../hooks/useNewListing";
 import { useNavigate } from 'react-router-dom';
 
 export default function ListingForm() {
@@ -8,7 +8,7 @@ export default function ListingForm() {
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
     const [image, setImage] = useState("");
-    const { handleNewListing, error, loading } = newListing();
+    const { handleNewListing, error, loading } = useNewListing();
 
     const placeholderUrl = "https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg";
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createListing } from "../services/authServices";
 
-export function newListing() {
+export function useNewListing() {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
