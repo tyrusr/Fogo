@@ -1,4 +1,3 @@
-import { type } from '@testing-library/user-event/dist/type';
 import Cookies from 'js-cookie';
 
 export async function loginUser(email, password) {
