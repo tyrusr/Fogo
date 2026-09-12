@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useGetListing } from "../hooks/useGetListing";
+import { useGetMe } from "../hooks/useGetMe";
 import PlaceBid from "../components/PlaceBid.jsx";
 
 export default function Listing({id}){
     const [listing, setListing] = useState();
     const { handleGetListing } = useGetListing();
+    const { data, getMe } = useGetMe();
 
     //make hook to grab the listing by the id here
     useEffect(() => {

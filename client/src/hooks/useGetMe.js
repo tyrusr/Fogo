@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { getLoggedInUser } from "../services/authServices";
 
-export default function useGetMe() {
+export function useGetMe() {
     const [data, setData] = useState(null);
 
     async function getMe() {
         try {
-            const response = await sampleServicesCall();
+            const response = await getLoggedInUser();
             setData(response);
         } catch (err) {
             //seterror
