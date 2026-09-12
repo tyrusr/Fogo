@@ -9,6 +9,7 @@ export default function Listing({id}){
     //make hook to grab the listing by the id here
     useEffect(() => {
         handleGetListing(id).then(data => { setListing(data); });
+        //hook to grab the users id
     }, [id])
 
     if (!listing) {
