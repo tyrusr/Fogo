@@ -289,3 +289,22 @@ export async function getAllUserListings() {
 
     return data;
 }
+
+
+export async function getLoggedInUser() {
+
+    const res = await fetch("http://localhost:5000/", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        credentials: 'include',
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+        throw new Error(data.message || "Get Profile failed");
+    }
+    return data;
+}
