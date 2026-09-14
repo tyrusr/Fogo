@@ -20,7 +20,6 @@ export async function loginUser(email, password) {
     }
 
     if (res.ok) {
-        console.log(data);
         localStorage.setItem("username", data.username);
         localStorage.setItem("isLoggedIn", "true");
     }
@@ -130,27 +129,7 @@ export async function createListing(name, price, description, image) {
     return data;
 }
 
-/*
-export async function getUserProfile() {
-    const csrfToken = Cookies.get('XSRF-TOKEN');
-
-    const res = await fetch("", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-CSRF-Token": csrfToken,
-        },
-        credentials: 'include',
-        //send params in body
-    });
-    const data = await res.json();
-    if (!res.ok) {
-        throw new Error(data.message || "Get Profile failed");
-    }
-    return data;
-}
-*/
-
+//maybe redundant
 export async function getListingDetails(params) {
     const csrfToken = Cookies.get('XSRF-TOKEN');
 
@@ -172,7 +151,7 @@ export async function getListingDetails(params) {
 
 export async function getListing(id) {
     const csrfToken = Cookies.get('XSRF-TOKEN');
-    console.log("end route called");
+
     const res = await fetch("http://localhost:5000/api/listings/getlisting", {
         method: "POST",
         headers: {
@@ -221,11 +200,8 @@ export async function placeBid(targetlisting, bidAmount) {
         },
         credentials: 'include',
 
-        //ids for user and for listing go here
         body: JSON.stringify({bidAmount})
     });
-
-    //await the json response
 
     const data = await res.json();
 
@@ -239,10 +215,8 @@ export async function placeBid(targetlisting, bidAmount) {
 
 
 export async function userBids() {
-    console.log("services ran");
-    const csrfToken = Cookies.get('XSRF-TOKEN');
 
-    console.log("services ran");
+    const csrfToken = Cookies.get('XSRF-TOKEN');
 
     const res = await fetch('http://localhost:5000/api/listings/userbids', {
         method:"GET",
@@ -255,8 +229,6 @@ export async function userBids() {
 
     const data = await res.json()
 
-    console.log("data",data);
-
     if (!res.ok) {
         console.log("wip");
     }
@@ -265,10 +237,7 @@ export async function userBids() {
 }
 
 export async function getAllUserListings() {
-    console.log("services ran");
     const csrfToken = Cookies.get('XSRF-TOKEN');
-
-    console.log("services ran");
 
     const res = await fetch('http://localhost:5000/api/listings/userlistings', {
         method:"GET",
@@ -280,8 +249,6 @@ export async function getAllUserListings() {
     });
 
     const data = await res.json()
-
-    console.log("data",data);
 
     if (!res.ok) {
         console.log("wip");

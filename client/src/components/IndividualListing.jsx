@@ -8,7 +8,6 @@ export default function Listing({id}){
     const { handleGetListing } = useGetListing();
     const { data, getMe } = useGetMe();
 
-    //make hook to grab the listing by the id here
     useEffect(() => {
         handleGetListing(id).then(data => { setListing(data); });
         getMe();
