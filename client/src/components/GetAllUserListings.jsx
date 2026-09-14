@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 export default function UserListings() {
     const { data, error, loading, getUserListings } = useGetUserListings();
 
+    const navigate = useNavigate();
+    
     useEffect(() => {
         getUserListings();
     }, [])

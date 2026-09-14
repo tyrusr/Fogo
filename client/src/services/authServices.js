@@ -292,7 +292,7 @@ export async function getAllUserListings() {
 
 
 export async function getLoggedInUser() {
-
+    
     const res = await fetch("http://localhost:5000/api/auth/getuser", {
         method: "GET",
         headers: {
