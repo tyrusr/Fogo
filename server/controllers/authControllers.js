@@ -153,4 +153,14 @@ const registerUser = async (req, res) => {
     }
 }
 
-module.exports = { loginUser, registerUser, logoutUser, nologout };
+
+const getLoggedInUser = async (req, res) => {
+    try {
+        return res.status(200).json({ id: req.user.id, username: req.user.username });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ error: "Server error" });
+    }
+}
+
+module.exports = { loginUser, registerUser, logoutUser, nologout, getLoggedInUser };
