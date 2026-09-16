@@ -16,6 +16,11 @@ export default function Listing({id}){
     if (!listing) {
         return (<main className="listing container">loading</main>);
     }
+
+    const isLister = data?.id === listing.listerRef;
+    const isEnded = listing.status === "ended";
+    const isHighBidder = data?.id === listing.highestBidder;
+
     return(
         <main className="listing-container">
             <section className="image-section">
@@ -35,7 +40,16 @@ export default function Listing({id}){
                 <p className="listing-description">{listing.description}</p>
                 
             </section>
-            <PlaceBid targetlisting={id}/>
+
+            {isLister ? (
+                <h1>You are the lister</h1>
+            ) : isHighBidder && isEnded ? (
+                <h1>Listing has ended</h1>
+            ) : isHighBidder ? (
+                <h1>You are the highest bidder</h1>
+            ) : (
+                <PlaceBid targetlisting={id}/>
+            )}
         </main>
     );
 }
