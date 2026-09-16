@@ -275,3 +275,26 @@ export async function getLoggedInUser() {
     }
     return data;
 }
+
+export async function endListing(targetlisting) {
+    const csrfToken = Cookies.get('XSRF-TOKEN');
+
+    const res = await fetch("/", {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken,
+        },
+        credentials: 'include',
+
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+        console.log(res);
+        throw new Error(`HTTP error! status: ${res.status}`);
+    }
+
+    return data;
+}
