@@ -170,6 +170,22 @@ const getUserListings = async (req, res) => {
 //handle close listing?
     // either timed close or let user decide not sure which just yet
 
+const endListing = async (req, res) => {
+    const listingId = req.params.id;
 
+    try{
+        const listing = await Listing.findById(listingId);
+        if (!listing) return res.status(404).json({ message: "Listing not found" });
+        if (listing.listerRef.toString() !== req.user.id) return res.status(403).json({ message: "You cannot end this listing" });
+        if (!listing.highestBidder) {
+            await listing.deleteOne({ _id: listingId });
+        } else if (listing.highestBidder) {
+            listing.status = "ended";
+            await listing.save();
+        }
+    } catch(err) {
+        res.status(404).json({ error: "Not found"});
+    }
+}
 
-module.exports = { createListing, getListings, getListing, placeBid, getUsersBids, getUserListings };
+module.exports = { createListing, getListings, getListing, placeBid, getUsersBids, getUserListings, endListing };
