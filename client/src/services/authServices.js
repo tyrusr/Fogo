@@ -279,7 +279,7 @@ export async function getLoggedInUser() {
 export async function endListing(targetlisting) {
     const csrfToken = Cookies.get('XSRF-TOKEN');
 
-    const res = await fetch("/", {
+    const res = await fetch(`http://localhost:5000/api/listings/${targetlisting}/endlisting`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
