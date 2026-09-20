@@ -298,3 +298,26 @@ export async function endListing(targetlisting) {
 
     return data;
 }
+
+export async function collectListing(targetlisting) {
+    const csrfToken = Cookies.get('XSRF-TOKEN');
+
+    const res = await fetch(`http://localhost:5000/api/listings/${targetlisting}/collectlisting`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken,
+        },
+        credentials: 'include',
+
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+        console.log(res);
+        throw new Error(`HTTP error! status: ${res.status}`);
+    }
+
+    return data;
+}
