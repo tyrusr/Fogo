@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useGetListings } from "../hooks/useGetListings";
-import { createStaticHandler } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export default function AllListings(){
