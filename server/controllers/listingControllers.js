@@ -188,4 +188,20 @@ const endListing = async (req, res) => {
     }
 }
 
-module.exports = { createListing, getListings, getListing, placeBid, getUsersBids, getUserListings, endListing };
+const collectListing = async (req, res) => {
+    const listingId = req.params.id;
+
+    try{
+        const listing = await Listing.findById(listingId);
+        if (!listing) return res.status(404).json({ message: "Listing not found" });
+        if (!listing.highestBidder.toString() !== req.user.id) return res.status(403).json({ message: "You cannot collect this listing" });
+        if (listing.highestBidder == req.user.id) {
+            await listing.deleteOne({ _id: listingId });
+        } 
+
+    } catch(err) {
+        res.status(404).json({ error: "Not found"});
+    }
+}
+
+module.exports = { createListing, getListings, getListing, placeBid, getUsersBids, getUserListings, endListing, collectListing };
