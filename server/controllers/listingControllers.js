@@ -34,7 +34,7 @@ const createListing = async (req, res) => {
 
 const getListings = async (req, res) => {
     try{
-        const listings = await Listing.find({}).sort({ createdAt: -1 });
+        const listings = await Listing.find({ status: 'active' }).sort({ createdAt: -1 });
         //later add pagination
 
         res.json({listings});
