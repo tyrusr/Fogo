@@ -148,7 +148,10 @@ const getUserListings = async (req, res) => {
     const userId = req.user.id;
     console.log("get user bids controller ran");
     try{
-        const listings = await Listing.find({"listerRef": userId}).sort({ createdAt: -1 });
+        const listings = await Listing.find({
+            listerRef: userId,
+            status: 'active'
+        }).sort({ createdAt: -1 });
         
         console.log(`listings ${listings}`, listings);
         res.json({listings});
