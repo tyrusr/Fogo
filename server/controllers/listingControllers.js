@@ -194,10 +194,12 @@ const collectListing = async (req, res) => {
     try{
         const listing = await Listing.findById(listingId);
         if (!listing) return res.status(404).json({ message: "Listing not found" });
-        if (listing.highestBidder.toString() !== req.user.id) return res.status(403).json({ message: "You cannot collect this listing" });
-        if (listing.highestBidder == req.user.id) {
-            await listing.deleteOne({ _id: listingId });
-        } 
+        if (listing.status !== "ended") return res.status(403).json({ message: "You cannot collect this listing" });
+        if (!listing.highestBidder || listing.highestBidder.toString() !== req.user.id) return res.status(403).json({ message: "You cannot collect this listing" });
+
+        await listing.deleteOne({ _id: listingId });
+
+        return res.status(200).json({ message: "Listing collected" });
 
     } catch(err) {
         res.status(404).json({ error: "Not found"});
