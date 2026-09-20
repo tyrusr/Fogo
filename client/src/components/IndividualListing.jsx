@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useGetListing } from "../hooks/useGetListing";
 import { useGetMe } from "../hooks/useGetMe";
 import PlaceBid from "../components/PlaceBid.jsx";
+import EndListing from "../components/EndListing.jsx";
+import CollectListing from "../components/CollectListing.jsx";
 
 export default function Listing({id}){
     const [listing, setListing] = useState();
@@ -42,9 +44,9 @@ export default function Listing({id}){
             </section>
 
             {isLister ? (
-                <h1>You are the lister</h1>
+                <EndListing targetlisting={id}/>
             ) : isHighBidder && isEnded ? (
-                <h1>Listing has ended</h1>
+                <CollectListing targetlisting={id}/>
             ) : isHighBidder ? (
                 <h1>You are the highest bidder</h1>
             ) : (
