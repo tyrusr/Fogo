@@ -1,6 +1,6 @@
 const express = require('express');
 //import controller
-const { createListing, getListings, getListing, placeBid, getUsersBids, getUserListings, endListing } = require('../controllers/listingControllers');
+const { createListing, getListings, getListing, placeBid, getUsersBids, getUserListings, endListing, collectListing } = require('../controllers/listingControllers');
 const router = express.Router();
 const { authenticateUser } = require('../middleware/authMiddleware');
 
@@ -23,6 +23,8 @@ router.get('/userbids', authenticateUser, getUsersBids);
 router.get('/userlistings', authenticateUser, getUserListings);
 
 router.patch('/:id/endlisting', authenticateUser, endListing);
+
+router.delete('/:id/collectlisting', authenticateUser, collectListing);
 
 //export all above
 module.exports = router;
