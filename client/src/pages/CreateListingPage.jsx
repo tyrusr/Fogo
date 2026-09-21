@@ -1,4 +1,3 @@
-//user can input their listing info here
 import Layout from "../components/NavBar";
 import CreateListing from "../components/CreateListing";
 
