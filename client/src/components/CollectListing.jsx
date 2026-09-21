@@ -1,7 +1,8 @@
-//imports/headers
+import { useNavigate } from "react-router-dom";
+import { useCollectListing } from "../hooks/useCollectListing";
 
 export default function CollectListing({targetlisting}){
-    const {data, error, loading, sendReq} = useCollectListing(targetlisting);
+    const { error, loading, sendReq } = useCollectListing(targetlisting);
 
 
     const navigate = useNavigate();
