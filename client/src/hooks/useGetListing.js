@@ -1,8 +1,4 @@
-// import from services
 import { getListing } from "../services/authServices";
-
-
-//hook to grab the listing when services responds
 
 export function useGetListing(){
 
