@@ -1,10 +1,6 @@
-//import validator from middleware
-//import sanatizer from middleware
-//import methods from model?
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const { generateAccessToken, generateRefreshToken } = require('../utils/generateToken');
-//import error middleware from middleware
 
 // in production we need to add secure: true to all the res.cookie stuff/////////////////////////////////////////////////////////////////////////////////
 
@@ -13,7 +9,6 @@ const loginUser = async (req, res) => {
     
     try{
         const existingUser = await User.findOne({ email });
-        console.log(existingUser);
         if (!existingUser) {
             return res.status(400).json({ error: "Invalid email or password"});
         } else {
