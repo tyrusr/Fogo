@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEndListing } from "../hooks/useEndListing";
 
 export default function EndListing({targetlisting}){
-    const {data, error, loading, sendReq} = useEndListing();
+    const { error, loading, sendReq} = useEndListing();
 
     const navigate = useNavigate();
 
