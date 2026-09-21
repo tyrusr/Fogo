@@ -42,9 +42,3 @@ export default function UserListings() {
     
     );
 }
-
-//function
-
-//use effect to call the hook
-
-//return 

@@ -57,9 +57,3 @@ export default function UserBids() {
         );
     })}
 }
-
-//function
-
-//use effect to call the hook
-
-//return 

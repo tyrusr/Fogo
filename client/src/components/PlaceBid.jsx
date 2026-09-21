@@ -1,8 +1,6 @@
-//import dependancies
 import { useState } from "react";
 import { usePlaceBid } from "../hooks/usePlaceBid";
 
-//add is logged in to the params
 export default function PlaceBid({targetlisting}) {
     const [bidAmount, setBidAmount] = useState("");
     const {data, error, loading, sendBid} = usePlaceBid();
