@@ -14,11 +14,11 @@ import ProfilePage from './pages/ProfilePage';
 import './App.css';
 
 function App() {
-  useCSRFToken();
-  useNoLogoutHandler();
   const [userName, setGlobalUsername] = useState(localStorage.getItem("username"));
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn"));
 
+  useCSRFToken();
+  useNoLogoutHandler(setGlobalUsername, setIsLoggedIn);
   return (
     <Routes>
       <Route path="/" element={<HomePage userName={userName} isLoggedIn={isLoggedIn} />} />
