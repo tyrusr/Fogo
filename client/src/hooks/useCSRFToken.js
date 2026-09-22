@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { getCSRFToken } from "../services/authServices";
 
-export default function useCSRFToken() {
+export function useCSRFToken() {
 
     useEffect(() => {
         const fetchToken = async () => {

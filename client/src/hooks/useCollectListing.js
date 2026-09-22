@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { collectListing } from "../services/authServices";
 
-export default function useCollectListing() {
+export function useCollectListing() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);

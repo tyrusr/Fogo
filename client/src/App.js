@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 
-import useCSRFToken from './hooks/useCSRFToken';
-import useNoLogoutHandler from './hooks/useNoLogoutHandler';
+import { useCSRFToken } from './hooks/useCSRFToken';
+import { useNoLogoutHandler } from './hooks/useNoLogoutHandler';
 
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
