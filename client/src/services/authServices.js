@@ -38,7 +38,8 @@ export async function nologout(){
         },
         credentials: 'include'
     })
-
+    console.log("ysssses");
+    console.log(res);
     return res;
 }
 

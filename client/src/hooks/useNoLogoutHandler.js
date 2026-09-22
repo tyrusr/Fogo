@@ -4,7 +4,7 @@ import { nologout } from "../services/authServices";
 
 export function useNoLogoutHandler() {
     const location = useLocation();
-
+    
     useEffect(() => {
         async function handleNoLogout() {
             try {

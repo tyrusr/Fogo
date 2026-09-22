@@ -43,7 +43,6 @@ const loginUser = async (req, res) => {
 }
 
 const nologout = async (req, res) => {
-
     const refreshToken = req.cookies.refreshToken;
 
     if (!refreshToken) {
@@ -52,7 +51,7 @@ const nologout = async (req, res) => {
 
     try {
         const decodedRefreshToken = jwt.verify( refreshToken, process.env.JWT_REFRESH_SECRET);
-        return res.status(200);
+        return res.status(200).json({ message: 'Session still valid' });
     } catch (err) {
         if(err.name === 'TokenExpiredError') {
             return res.status(401).json({ message: 'Access denied'});
