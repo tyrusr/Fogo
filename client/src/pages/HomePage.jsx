@@ -7,7 +7,7 @@ export default function HomePage({ userName, isLoggedIn }) {
         <main>
             <Layout userName={userName} isLoggedIn={isLoggedIn} />
             <NewListing isLoggedIn={isLoggedIn} />
-            <AllListings />
+            <AllListings isLoggedIn={isLoggedIn} />
         </main>
     );
 }

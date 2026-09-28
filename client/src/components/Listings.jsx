@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import { useGetListings } from "../hooks/useGetListings";
 import { useNavigate } from "react-router-dom";
 
-export default function AllListings(){
+export default function AllListings({ isLoggedIn }){
     const {listings, error, loading, handleGetListings } = useGetListings();
     const navigate = useNavigate();
-
     
     useEffect(() => {
         handleGetListings();
@@ -14,13 +13,14 @@ export default function AllListings(){
     const handleClick = (listing) => {
         navigate(`/listing/${listing._id}`);
     };
+    
     if (loading || !listings) {
         return (<main className="listing container">loading</main>);
     }
     return(
         <main className="listings-container">
             {listings && listings.map(listing => (
-                    <section key={listing._id} className="listings-main" onClick={() => handleClick(listing)}>
+                    <section key={listing._id} className="listings-main" onClick={ isLoggedIn ? () => handleClick(listing) : () => navigate(`/login`)}>
                         <div className="listings-np-container">
                             <h1 className="listings-name">{listing.name}</h1>
                             <h3 className="listings-price">
