@@ -10,6 +10,10 @@ export function useLogout() {
         setError(null);
         try {
             const data = await logoutUser();
+
+            localStorage.removeItem("username");
+            localStorage.removeItem("isLoggedIn");
+            
             setLoading(false);
             return data;
         } catch(err) {

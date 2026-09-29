@@ -59,9 +59,10 @@ export async function logoutUser(){
     if(!res.ok) {
         throw new Error("Failed to Logout user");
     }
-    //move to hooks later
-    localStorage.removeItem("username");
-    localStorage.removeItem("isLoggedIn");
+    
+    const data = await res.json();
+
+    return data;
 }
 
 
