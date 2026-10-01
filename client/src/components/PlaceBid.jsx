@@ -8,7 +8,6 @@ export default function PlaceBid({targetlisting}) {
     async function handleClick(e) {
         e.preventDefault();
 
-        console.log("button was pressed");
         try{
             const response = await sendBid(targetlisting, bidAmount);
             console.log(`response: ${response} `);
