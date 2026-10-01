@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useGetListing } from "../hooks/useGetListing";
 import { useGetMe } from "../hooks/useGetMe";
 import PlaceBid from "../components/PlaceBid.jsx";
@@ -6,12 +6,11 @@ import EndListing from "../components/EndListing.jsx";
 import CollectListing from "../components/CollectListing.jsx";
 
 export default function Listing({id}){
-    const [listing, setListing] = useState();
-    const { handleGetListing } = useGetListing();
+    const { listing, handleGetListing } = useGetListing();
     const { data, getMe } = useGetMe();
 
     useEffect(() => {
-        handleGetListing(id).then(data => { setListing(data); });
+        handleGetListing(id);
         getMe();
     }, [id])
 
