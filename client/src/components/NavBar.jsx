@@ -8,7 +8,6 @@ export default function Layout({ userName, isLoggedIn }){
     const onLogoutClick = async () => {
         await handleLogout();
         navigate('/');
-        window.location.reload();
     }
 
     return (

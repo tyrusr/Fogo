@@ -5,6 +5,7 @@ const API_URL = "http://localhost:5000/api";
 export async function loginUser(email, password) {
     const csrfToken = Cookies.get('XSRF-TOKEN');
 
+    console.log(`csrf token: ${csrfToken}`);
     const res = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: { 
@@ -17,6 +18,7 @@ export async function loginUser(email, password) {
     });
 
     const data = await res.json();
+    console.log(`data from login services: ${data}`);
     if (!res.ok) {
         throw new Error(data.error || data.message || "Login failed");
     }
@@ -47,6 +49,7 @@ export async function nologout(){
 export async function logoutUser(){
     const csrfToken = Cookies.get('XSRF-TOKEN');
 
+    console.log(`csrf token: ${csrfToken}`);
     const res = await fetch(`${API_URL}/auth/logout`, {
         method: "POST",
         headers: {
