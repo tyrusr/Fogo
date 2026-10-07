@@ -150,7 +150,6 @@ export async function getListing(id) {
     })
     const data = await res.json();
 
-    console.log(data);
     if (!res.ok) {
         throw new Error(data.message || "Get listing failed");
     }
@@ -159,7 +158,7 @@ export async function getListing(id) {
 }
 
 
-export async function getListings(params) {
+export async function getListings() {
     const res = await fetch(`${API_URL}/listings/`, {
         method: "GET",
         headers: {
@@ -203,7 +202,6 @@ export async function placeBid(targetlisting, bidAmount) {
 
 
 export async function userBids() {
-
     const csrfToken = Cookies.get('XSRF-TOKEN');
 
     const res = await fetch(`${API_URL}/listings/userbids`, {
