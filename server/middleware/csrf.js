@@ -14,4 +14,4 @@ const {
   },
 });
 
-export { generateCsrfToken, doubleCsrfProtection };
+module.export { generateCsrfToken, doubleCsrfProtection };
