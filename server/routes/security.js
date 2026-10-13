@@ -1,20 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const { generateCsrfToken } = require('../middleware/csrf');
 
 router.get('/csrf-token', (req, res) => {
     try {
-        const token = req.csrfToken();
-
-        if (!token) {
-            return res.status(500).json({ error: "Failed to generate CSRF token"});        
-        } else if (token) {
-            res.cookie('XSRF-TOKEN', token, {
-                httpOnly: false,
-                sameSite: 'strict',
-                // secure: true, // enable in production
-            })
-            res.status(200).json({ message: "CSRF token created" });
-        }
+        const csrfToken = generateCsrfToken(req, res);
+        res.status(200).json({ csrfToken });
     } catch (err) {
         console.error("CSRF error:", err);
         res.status(500).json({ error: "Server error during CSRF generation" });
