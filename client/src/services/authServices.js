@@ -1,9 +1,7 @@
-import Cookies from 'js-cookie';
-
 const API_URL = "http://localhost:5000/api";
 
 export async function loginUser(email, password) {
-    const csrfToken = Cookies.get('XSRF-TOKEN');
+    const { csrfToken } = await getCSRFToken();
 
     console.log(`csrf token: ${csrfToken}`);
     const res = await fetch(`${API_URL}/auth/login`, {
@@ -32,7 +30,7 @@ export async function loginUser(email, password) {
 }
 
 export async function nologout(){
-    const csrfToken = Cookies.get('XSRF-TOKEN');
+    const { csrfToken } = await getCSRFToken();
 
     const res = await fetch(`${API_URL}/auth/nologout`, {
         method: "POST",
@@ -47,7 +45,7 @@ export async function nologout(){
 }
 
 export async function logoutUser(){
-    const csrfToken = Cookies.get('XSRF-TOKEN');
+    const { csrfToken } = await getCSRFToken();
 
     console.log(`csrf token: ${csrfToken}`);
     const res = await fetch(`${API_URL}/auth/logout`, {
@@ -90,7 +88,7 @@ export async function getCSRFToken() {
 
 
 export async function registerUser(username, email, password, password2) {
-    const csrfToken = Cookies.get('XSRF-TOKEN');
+    const { csrfToken } = await getCSRFToken();
 
     const res = await fetch(`${API_URL}/auth/register`, {
         method: "POST",
@@ -117,7 +115,7 @@ export async function registerUser(username, email, password, password2) {
 }
 
 export async function createListing(name, price, description, image) {
-    const csrfToken = Cookies.get('XSRF-TOKEN');
+    const { csrfToken } = await getCSRFToken();
 
     const res = await fetch(`${API_URL}/listings/createlisting`, {
         method: "POST",
@@ -137,7 +135,7 @@ export async function createListing(name, price, description, image) {
 
 
 export async function getListing(id) {
-    const csrfToken = Cookies.get('XSRF-TOKEN');
+    const { csrfToken } = await getCSRFToken();
 
     const res = await fetch(`${API_URL}/listings/getlisting`, {
         method: "POST",
@@ -177,7 +175,7 @@ export async function getListings() {
 }
 
 export async function placeBid(targetlisting, bidAmount) {
-    const csrfToken = Cookies.get('XSRF-TOKEN');
+    const { csrfToken } = await getCSRFToken();
 
     const res = await fetch(`${API_URL}/listings/${targetlisting}/bid`, {
         method: "PATCH",
@@ -202,13 +200,11 @@ export async function placeBid(targetlisting, bidAmount) {
 
 
 export async function userBids() {
-    const csrfToken = Cookies.get('XSRF-TOKEN');
 
     const res = await fetch(`${API_URL}/listings/userbids`, {
         method:"GET",
         headers: {
             "Content-Type": "application/json",
-            "X-CSRF-Token": csrfToken,
         },
         credentials: "include",
     });
@@ -223,13 +219,11 @@ export async function userBids() {
 }
 
 export async function getAllUserListings() {
-    const csrfToken = Cookies.get('XSRF-TOKEN');
 
     const res = await fetch(`${API_URL}/listings/userlistings`, {
         method:"GET",
         headers: {
             "Content-Type": "application/json",
-            "X-CSRF-Token": csrfToken,
         },
         credentials: "include",
     });
@@ -263,7 +257,7 @@ export async function getLoggedInUser() {
 }
 
 export async function endListing(targetlisting) {
-    const csrfToken = Cookies.get('XSRF-TOKEN');
+    const { csrfToken } = await getCSRFToken();
 
     const res = await fetch(`${API_URL}/listings/${targetlisting}/endlisting`, {
         method: "PATCH",
@@ -286,7 +280,7 @@ export async function endListing(targetlisting) {
 }
 
 export async function collectListing(targetlisting) {
-    const csrfToken = Cookies.get('XSRF-TOKEN');
+    const { csrfToken } = await getCSRFToken();
 
     const res = await fetch(`${API_URL}/listings/${targetlisting}/collectlisting`, {
         method: "DELETE",
