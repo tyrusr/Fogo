@@ -27,6 +27,7 @@ export default function LoginForm({ setGlobalUsername, setIsLoggedIn }) {
         id="email"
         name="email"
         required
+        maxLength={254}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
@@ -38,7 +39,7 @@ export default function LoginForm({ setGlobalUsername, setIsLoggedIn }) {
             required
             value={password}
             minLength={1}
-            maxLength={100}
+            maxLength={254}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
         /> <br />

@@ -39,6 +39,7 @@ export default function RegisternForm({ setGlobalUsername, setIsLoggedIn}) {
         id="email"
         required
         value={email}
+        maxLength={254}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
         /> <br />
@@ -49,7 +50,7 @@ export default function RegisternForm({ setGlobalUsername, setIsLoggedIn}) {
             required
             value={password}
             minLength={1}
-            maxLength={100}
+            maxLength={254}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
         /> <br />
@@ -60,7 +61,7 @@ export default function RegisternForm({ setGlobalUsername, setIsLoggedIn}) {
             required
             value={password2}
             minLength={1}
-            maxLength={100}
+            maxLength={254}
             onChange={(e) => setPassword2(e.target.value)}
             placeholder="Password"
         /> <br />

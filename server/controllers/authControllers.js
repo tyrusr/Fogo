@@ -7,8 +7,6 @@ const { generateAccessToken, generateRefreshToken } = require('../utils/generate
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
-    console.log(`backend is being touched`);
-    
     try{
         const existingUser = await User.findOne({ email });
         if (!existingUser) {

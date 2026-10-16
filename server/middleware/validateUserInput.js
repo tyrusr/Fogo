@@ -1,12 +1,43 @@
-//require validator
+const express = require('express');
+const { body, validationResult } = require('express-validator');
 
-//valudate the users gave a proper email
-    //return validation status
+const app = express();
+app.use(express.json());
 
-//validate username isnt too long or empty
-    //return validation status
+const validateUserLogin = [
+    body('email')
+    .isEmail()
+    .withMessage('Please enter a valid email address')
+    .isLength({ max: 254 })
+    .withMessage('Email too long'),
 
-//validate the password isnt within the allowed length
-    //return validation status
+    body('password')
+    .isLength({ min: 1, max: 254 })
+    .withMessage('Password must be at least 6 characters long')
+]
+
+const validateUserRegister = [
+    body('username')
+    .isLength({ min: 1, max: 30 })
+    .withMessage('Username must be at least 1 character long and 30 characters long'),
+
+    body('email')
+    .isEmail()
+    .withMessage('Please enter a valid email address')
+    .isLength({ max: 254 })
+    .withMessage('Email too long'),
+    
+    body('password')
+    .isLength({ min: 6, max: 254 })
+    .withMessage('Password must be at least 6 characters long')
+]
+
+const validateCreateListing = [
+    
+]
+
+const validatePlaceBid = [
+    
+]
 
 //export all
