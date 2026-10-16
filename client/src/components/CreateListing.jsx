@@ -33,6 +33,7 @@ export default function ListingForm() {
             name="name"
             required
             value={name}
+            maxLength={150}
             onChange={(e) => setName(e.target.value)}
             placeholder="Listing Name"
             />
@@ -40,6 +41,7 @@ export default function ListingForm() {
             type="number"
             step="0.01"
             min="0"
+            max="9999999.99"
             id="price"
             name="price"
             required
@@ -52,6 +54,7 @@ export default function ListingForm() {
             name="description"
             required
             value={description}
+            maxLength={500}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Description"
             />
