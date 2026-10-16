@@ -24,6 +24,7 @@ export default function PlaceBid({targetlisting}) {
             <input
                 type="number"
                 value={bidAmount}
+                name="bidAmount"
                 onChange={(e) => setBidAmount(e.target.value)}
                 required
             />

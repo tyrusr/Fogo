@@ -1,8 +1,4 @@
-const express = require('express');
 const { body, validationResult } = require('express-validator');
-
-const app = express();
-app.use(express.json());
 
 const validateUserLogin = [
     body('email')
@@ -26,18 +22,31 @@ const validateUserRegister = [
     .withMessage('Please enter a valid email address')
     .isLength({ max: 254 })
     .withMessage('Email too long'),
-    
+
     body('password')
     .isLength({ min: 6, max: 254 })
     .withMessage('Password must be at least 6 characters long')
 ]
 
 const validateCreateListing = [
-    
+    body('name')
+    .isLength({ max: 150 })
+    .withMessage('Name is too long'),
+
+    body('price')
+    .isFloat({ min: 0.01, max: 9999999.99 })
+    .withMessage('Price must be between 0.01 and 9999999.99'),
+
+    body('description')
+    .isLength({ max: 500 })
+    .withMessage('Description is too long'),
 ]
 
 const validatePlaceBid = [
-    
+    body('bidAmount')
+    .isFloat({ min: 0.01, max: 9999999.99 })
+    .withMessage('Bid amount must be between 0.01 and 9999999.99'),
 ]
 
 //export all
+module.exports = { validateUserLogin, validateUserRegister, validateCreateListing, validatePlaceBid };

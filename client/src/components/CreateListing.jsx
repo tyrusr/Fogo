@@ -40,7 +40,7 @@ export default function ListingForm() {
             <input 
             type="number"
             step="0.01"
-            min="0"
+            min="0.01"
             max="9999999.99"
             id="price"
             name="price"
