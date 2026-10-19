@@ -1,10 +1,14 @@
 const Listing = require('../models/Listing');
+const sanitizeListingInput = require('../utils/sanitizeListingInput');
 
 const createListing = async (req, res) => {
     try{
         const { name, price, description, image } = req.body;
         const userId = req.user.id;
-        const newListing = new Listing({ name, price, description, image, listerRef: userId })
+        const sanitizedListing = await sanitizeListingInput(name, description);
+        const cleanName = sanitizedListing.name;
+        const cleanDescription = sanitizedListing.description;
+        const newListing = new Listing({ cleanName, price, cleanDescription, image, listerRef: userId })
         await newListing.save(); 
 
         res.status(201).json({message: "Listing created successfully" });
