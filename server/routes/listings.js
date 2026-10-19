@@ -1,16 +1,18 @@
 const express = require('express');
 const { createListing, getListings, getListing, placeBid, getUsersBids, getUserListings, endListing, collectListing } = require('../controllers/listingControllers');
+const { validateUserInput } = require('../middleware/validateUserInput');
+const { validationReturnError } = require('../middleware/validationReturnError');
 const router = express.Router();
 const { authenticateUser } = require('../middleware/authMiddleware');
 
 //get listings chunk, based on what page if using paination 20 results per page
 router.get('/', getListings)
 
-router.post('/createlisting', authenticateUser, createListing);
+router.post('/createlisting', validateUserInput, validationReturnError, authenticateUser, createListing);
 
 router.post('/getlisting', getListing/*authenticate?*/);
 
-router.patch('/:id/bid', authenticateUser, placeBid)
+router.patch('/:id/bid', validateUserInput, validationReturnError, authenticateUser, placeBid)
 
 router.get('/userbids', authenticateUser, getUsersBids);
 
