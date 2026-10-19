@@ -48,5 +48,4 @@ const validatePlaceBid = [
     .withMessage('Bid amount must be between 0.01 and 9999999.99'),
 ]
 
-//export all
 module.exports = { validateUserLogin, validateUserRegister, validateCreateListing, validatePlaceBid };
