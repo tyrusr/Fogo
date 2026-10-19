@@ -14,9 +14,14 @@ const validateUserLogin = [
 
 const validateUserRegister = [
     body('username')
+    .isString()
+    .withMessage('Username must be text')
     .isLength({ min: 1, max: 30 })
-    .withMessage('Username must be at least 1 character long and 30 characters long'),
-
+    .withMessage('Username must be at least 1 character long and 30 characters long')
+    .trim()
+    .notEmpty()
+    .withMessage('Username cannot be empty'),
+    
     body('email')
     .isEmail()
     .withMessage('Please enter a valid email address')
