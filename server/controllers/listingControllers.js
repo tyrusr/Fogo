@@ -47,10 +47,10 @@ const placeBid = async (req, res) => {
     try{
 
         const listing = await Listing.findById(targetlisting);
-        if (!listing) return res.status(404).json({ message: "Listing not found" });
+        if (!listing) return res.status(404).json({ error: "Listing not found" });
 
         if (listing.listerRef.toString() === userId) {
-            return res.status(403).json({ message: "You cannot bid on your own listing" });
+            return res.status(403).json({ error: "You cannot bid on your own listing" });
         }
 
         const updateListing = await Listing.findOneAndUpdate(
@@ -68,7 +68,7 @@ const placeBid = async (req, res) => {
 
         if (!updateListing) {
             return res.status(400).json({
-                message: "Bid rejected: please try again"
+                error: "Bid rejected: please try again"
             });
         }
 
@@ -78,7 +78,7 @@ const placeBid = async (req, res) => {
         })
     } catch(err) {
         console.error(err);
-        return res.status(500).json({ message: "Server error, please try again."})
+        return res.status(500).json({ error: "Server error, please try again."})
     }
 }
 
@@ -113,8 +113,8 @@ const endListing = async (req, res) => {
 
     try{
         const listing = await Listing.findById(listingId);
-        if (!listing) return res.status(404).json({ message: "Listing not found" });
-        if (listing.listerRef.toString() !== req.user.id) return res.status(403).json({ message: "You cannot end this listing" });
+        if (!listing) return res.status(404).json({ error: "Listing not found" });
+        if (listing.listerRef.toString() !== req.user.id) return res.status(403).json({ error: "You cannot end this listing" });
         if (!listing.highestBidder) {
             await listing.deleteOne({ _id: listingId });
         } else if (listing.highestBidder) {
@@ -131,9 +131,9 @@ const collectListing = async (req, res) => {
 
     try{
         const listing = await Listing.findById(listingId);
-        if (!listing) return res.status(404).json({ message: "Listing not found" });
-        if (listing.status !== "ended") return res.status(403).json({ message: "You cannot collect this listing" });
-        if (!listing.highestBidder || listing.highestBidder.toString() !== req.user.id) return res.status(403).json({ message: "You cannot collect this listing" });
+        if (!listing) return res.status(404).json({ error: "Listing not found" });
+        if (listing.status !== "ended") return res.status(403).json({ error: "You cannot collect this listing" });
+        if (!listing.highestBidder || listing.highestBidder.toString() !== req.user.id) return res.status(403).json({ error: "You cannot collect this listing" });
 
         await listing.deleteOne({ _id: listingId });
 
