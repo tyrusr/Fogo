@@ -46,7 +46,7 @@ const nologout = async (req, res) => {
     const refreshToken = req.cookies.refreshToken;
 
     if (!refreshToken) {
-        return res.status(401).json({ message: 'Access denied'});
+        return res.status(401).json({ error: 'Access denied'});
     }
 
     try {
@@ -54,11 +54,11 @@ const nologout = async (req, res) => {
         return res.status(200).json({ message: 'Session still valid' });
     } catch (err) {
         if(err.name === 'TokenExpiredError') {
-            return res.status(401).json({ message: 'Access denied'});
+            return res.status(401).json({ error: 'Access denied'});
         }
 
         console.error(err);
-        return res.status(401).json({ message: 'Access denied'});
+        return res.status(401).json({ error: 'Access denied'});
     }
 }
 
@@ -66,7 +66,7 @@ const logoutUser = async (req, res) => {
     const accessToken = req.cookies.accessToken;
 
     if (!accessToken) {
-        return res.status(401).json({ message: 'Access denied'});
+        return res.status(401).json({ error: 'Access denied'});
     }
 
     try {
