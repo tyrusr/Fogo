@@ -57,11 +57,11 @@ export async function logoutUser(){
         credentials: 'include'
     })
 
-    if(!res.ok) {
-        throw new Error("Failed to Logout user");
-    }
-    
     const data = await res.json();
+    
+    if(!res.ok) {
+        throw new Error(data.error || data.message || "Logout failed");
+    }
 
     return data;
 }
@@ -77,11 +77,11 @@ export async function getCSRFToken() {
         credentials: 'include'
     });
 
-    if (!res.ok) {
-        throw new Error("Failed to fetch CSRF token");
-    }
-
     const data = await res.json();
+
+    if (!res.ok) {
+        throw new Error(data.error || data.message || "Get CSRF token failed");
+    }
 
     return data;
 }
@@ -102,6 +102,7 @@ export async function registerUser(username, email, password, password2) {
     });
 
     const data = await res.json();
+
     if (!res.ok) {
         throw new Error(data.error || data.message || "Register failed")
     }
@@ -126,7 +127,9 @@ export async function createListing(name, price, description, image) {
         credentials: 'include',
         body: JSON.stringify({name, price, description, image})
     });
+
     const data = await res.json();
+
     if (!res.ok) {
         throw new Error(data.error || data.message || "Create listing failed")
     }
@@ -145,11 +148,12 @@ export async function getListing(id) {
         },
         credentials: 'include',
         body: JSON.stringify({id})
-    })
+    });
+
     const data = await res.json();
 
     if (!res.ok) {
-        throw new Error(data.message || "Get listing failed");
+        throw new Error(data.error || data.message || "Get listing failed");
     }
 
     return data;
@@ -168,7 +172,7 @@ export async function getListings() {
     const data = await res.json();
 
     if (!res.ok) {
-        throw new Error(data.message || "Get Listings failed");
+        throw new Error(data.error || data.message || "Get Listings failed");
     }
 
     return data;
@@ -192,7 +196,7 @@ export async function placeBid(targetlisting, bidAmount) {
 
     if (!res.ok) {
         console.log(res);
-        throw new Error(`HTTP error! status: ${res.status}`);
+        throw new Error(data.error || data.message || `HTTP error! status: ${res.status}`);
     }
 
     return data;
@@ -212,7 +216,7 @@ export async function userBids() {
     const data = await res.json()
 
     if (!res.ok) {
-        console.log("wip");
+        throw new Error(data.error || data.message || "Get user bids failed");
     }
 
     return data;
@@ -231,7 +235,7 @@ export async function getAllUserListings() {
     const data = await res.json()
 
     if (!res.ok) {
-        console.log("wip");
+        throw new Error(data.error || data.message || "Get user listings failed");
     }
 
     return data;
@@ -251,7 +255,7 @@ export async function getLoggedInUser() {
     const data = await res.json();
 
     if (!res.ok) {
-        throw new Error(data.message || "Get Profile failed");
+        throw new Error(data.error || data.message || "Get Profile failed");
     }
     return data;
 }
@@ -273,7 +277,7 @@ export async function endListing(targetlisting) {
 
     if (!res.ok) {
         console.log(res);
-        throw new Error(`HTTP error! status: ${res.status}`);
+        throw new Error(data.error || data.message || "Failed to end listing");
     }
 
     return data;
@@ -296,7 +300,7 @@ export async function collectListing(targetlisting) {
 
     if (!res.ok) {
         console.log(res);
-        throw new Error(`HTTP error! status: ${res.status}`);
+        throw new Error(data.error || data.message || "Failed to collect listing");
     }
 
     return data;
