@@ -9,7 +9,7 @@ export function useGetMe() {
             const response = await getLoggedInUser();
             setData(response);
         } catch (err) {
-            //seterror
+            console.log(err);
         }
     }
 
