@@ -13,7 +13,7 @@ export function useCollectListing() {
             setData(response);
             return response;
         } catch (err) {
-            setError(err);
+            setError(err.message);
         } finally {
             setLoading(false);
         }
