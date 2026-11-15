@@ -11,7 +11,7 @@ export function useGetUserListings() {
             const response = await getAllUserListings();
             setData(response.listings || []);
         } catch(err) {
-            //seterror
+            setError(err.message);
         } finally {
             setLoading(false);
         }
