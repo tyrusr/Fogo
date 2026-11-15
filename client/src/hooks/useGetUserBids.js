@@ -13,7 +13,7 @@ export function useGetUserBids(params){
             const response = await userBids();
             setData(response.listings || []);
         } catch(err) {
-            setError(err);
+            setError(err.message);
         } finally {
             setLoading(false);
         }
