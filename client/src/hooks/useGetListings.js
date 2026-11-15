@@ -12,7 +12,7 @@ export function useGetListings(){
             const data = await getListings();
             setListings(data.listings);
         } catch(err) {
-            console.log(err);
+            setError(err.message);
         } finally {
             setloading(false);
         }
