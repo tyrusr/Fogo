@@ -20,13 +20,7 @@ export function useRegister() {
             setLoading(false);
             return true;
         } catch(err) {
-            if (err.message.includes("username")) {
-                setError("Username already taken");
-            } else if (err.message.includes("email")) {
-                setError("Email is already taken");
-            } else {
-                setError(err.message);
-            }
+            setError(err.message);
             setLoading(false);
         }
 
