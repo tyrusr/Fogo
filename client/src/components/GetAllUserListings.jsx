@@ -18,8 +18,7 @@ export default function UserListings() {
 
     return (
         <div>
-            <div>wip</div>
-
+            {error && <p style={{ color: "red"}}>{error}</p>} <br />
             <main>
                 {data && data.map(listing => (
                     <section key={listing._id} className="listings-main" onClick={() => handleClick(listing)}>
