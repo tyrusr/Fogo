@@ -17,7 +17,7 @@ export function useLogout() {
             setLoading(false);
             return data;
         } catch(err) {
-            setError(err.message);
+            console.log(err.message);
             setLoading(false);
         }
     }
