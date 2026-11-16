@@ -31,6 +31,7 @@ export default function PlaceBid({targetlisting}) {
             <button type="submit"  disabled={loading}>
                 {loading ? "Loading" : "Place Bid"}
             </button>
+            {error && <p style={{ color: "red"}}>{error}</p>} <br />
         </form>
     )
 }
