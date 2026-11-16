@@ -33,6 +33,7 @@ export default function UserBids() {
 
         return (
             <div>
+                {error && <p style={{ color: "red"}}>{error}</p>} <br />
                 <main>
                     
                         <section key={listing._id} className="listings-main" onClick={() => handleClick(listing)}>
