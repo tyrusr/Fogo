@@ -19,6 +19,7 @@ export default function AllListings({ isLoggedIn }){
     }
     return(
         <main className="listings-container">
+            {error && <p style={{ color: "red"}}>{error}</p>} <br />
             {listings && listings.map(listing => (
                     <section key={listing._id} className="listings-main" onClick={ isLoggedIn ? () => handleClick(listing) : () => navigate(`/login`)}>
                         <div className="listings-np-container">
