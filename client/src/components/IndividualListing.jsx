@@ -24,6 +24,7 @@ export default function Listing({id}){
 
     return(
         <main className="listing-container">
+            {error && <p style={{ color: "red"}}>{error}</p>} <br />
             <section className="image-section">
                 <img 
                     className="listing-image"
